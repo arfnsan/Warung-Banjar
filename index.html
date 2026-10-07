@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+   <!-- ============================================================
+       HEAD: META, FONT & STYLESHEET
+       ============================================================ -->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="author" content="Sarab">
+   <meta name="description" content="Warban - Website Warung Masakan Banjar">
+   <title>Warban - Masakan Banjar</title>
+
+   <!-- Google Fonts -->
+   <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap"
+      rel="stylesheet" />
+   <!-- Bootstrap 5.3 -->
+   <link href="css/bootstrap.min.css" rel="stylesheet" />
+   <!-- Animasi AOS (Animate on Scroll) -->
+   <link href="css/aos.css" rel="stylesheet" />
+   <!-- Swiper -->
+   <link href="css/swiper-bundle.min.css" rel="stylesheet" />
+   <!-- Font Awesome (all.min.css) -->
+   <link rel="stylesheet" href="css/all.min.css" />
+   <!-- Magnific Popup CSS -->
+   <link rel="stylesheet" href="css/magnific-popup.css" />
+   <!-- Style utama -->
+   <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+   <!-- ============================================================
+       TOPBAR: KONTAK, PROMO & SOSIAL MEDIA
+       ============================================================ -->
+   <div id="topbar">
+      <div class="container">
+         <div class="d-flex justify-content-between align-menu-center flex-wrap gap-2">
+
+            <!-- Info kontak singkat -->
+            <div class="top-contact d-flex flex-wrap">
+               <span><i class="fas fa-phone-alt"></i>+62 808-5410-098</span>
+               <span><i class="fas fa-envelope"></i>warban@gmail.com</span>
+               <span><i class="fas fa-map-marker-alt"></i>Kayu Tangi II, BJM</span>
+            </div>
+
+            <!-- Tag promo & ikon sosial media -->
+            <div class="d-flex align-menu-center gap-3">
+               <span class="ttag"><i class="fas fa-fire me-1"></i>Gratis Antar, Hari Ini!</span>
+               <div class="tsoc">
+                  <a href="#"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                  <a href="#"><i class="fab fa-tiktok"></i></a>
+                  <a href="#"><i class="fab fa-youtube"></i></a>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+
+
+   <!-- ============================================================
+       NAVIGASI UTAMA
+       ============================================================ -->
+   <nav class="navbar navbar-expand-lg" id="nav">
+      <div class="container">
+
+         <!-- Logo / brand -->
+         <a class="navbar-brand" href="#">
+            <div class="blogo">
+               <div class="bico"><i class="fas fa-utensils"></i></div>
+               <div>
+                  <div class="bname">War<span>ban</span></div>
+                  <div class="bsub">Warung Masakan Banjar</div>
+               </div>
+            </div>
+         </a>
+
+         <!-- Tombol menu (mobile) -->
+         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <i class="fas fa-bars" style="color:var(--primary);font-size:1.35rem;"></i>
+         </button>
+
+         <div class="collapse navbar-collapse" id="navmenu">
+
+            <!-- Daftar tautan menu -->
+            <ul class="navbar-nav mx-auto">
+               <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
+               <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+               <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+               <li class="nav-item"><a class="nav-link" href="#chefs">Juru Masak</a></li>
+               <li class="nav-item"><a class="nav-link" href="#testimonials">Ulasan</a></li>
+               <li class="nav-item"><a class="nav-link" href="#reservation">Reservasi</a></li>
+               <li class="nav-item"><a class="nav-link" href="#contact-section">Kontak</a></li>
+            </ul>
+
+            <!-- Tombol pencarian & tombol pesan -->
+            <div class="d-flex align-items-center gap-1">
+               <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
+               <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Pesan Sekarang!</a>
+            </div>
+
+         </div>
+      </div>
+   </nav>
+
+
+   <!-- ============================================================
+       OVERLAY PENCARIAN
+       ============================================================ -->
+   <div id="searchOv">
+      <button class="sovclose" id="searchClose"><i class="fas fa-times"></i></button>
+
+      <div class="sovbox">
+         <h4>Mau makan apa hari ini?</h4>
+
+         <!-- Kolom input pencarian -->
+         <div class="sovinput">
+            <input type="text" id="searchInput" placeholder="Cari di sini..." autocomplete="off" />
+            <button><i class="fas fa-search"></i></button>
+         </div>
+
+         <!-- Kategori di dalam kotak pencarian -->
+         <div class="sovcats">
+            <div class="sovcat active" data-cat="all">
+               <img src="img/menu/1.jpg" alt="" />Semua Menu
+            </div>
+            <div class="sovcat" data-cat="burgers">
+               <img src="img/menu/2.jpg" alt="" />Soto Banjar
+            </div>
+            <div class="sovcat" data-cat="pizza">
+               <img src="img/menu/3.jpg" alt="" />Ikan Patin Baubar
+            </div>
+            <div class="sovcat" data-cat="chicken">
+               <img src="img/menu/4.jpg" alt="" />Nasi Kuning Banjar
+            </div>
+            <div class="sovcat" data-cat="wraps">
+               <img src="img/menu/5.jpg" alt="" />Ayam Masak Habang
+            </div>
+            <div class="sovcat" data-cat="pasta">
+               <img src="img/menu/6.jpg" alt="" />Iwak Karing Betanak
+            </div>
+            <div class="sovcat" data-cat="desserts">
+               <img src="img/menu/7.jpg" alt="" />Gangan Asam Banjar
+            </div>
+            <div class="sovcat" data-cat="desserts">
+               <img src="img/menu/8.jpg" alt="" />Lontong Banjar
+            </div>
+            <div class="sovcat" data-cat="desserts">
+               <img src="img/menu/9.jpg" alt="" />Bingka
+            </div>
+            <div class="sovcat" data-cat="desserts">
+               <img src="img/menu/10.jpg" alt="" />Pais Patin
+            </div>
+         </div>
+
+         <!-- Pencarian terpopuler -->
+         <div class="sovtrend">
+            <p><i class="fas fa-fire me-1" style="color:var(--secondary);"></i>Paling banyak dicari</p>
+            <span class="ttag">Soto Banjar</span>
+            <span class="ttag">Nasi Kuning Banjar</span>
+            <span class="ttag">Ikan Patin Baubar</span>
+            <span class="ttag">Ayam Masak Habang</span>
+            <span class="ttag">Iwak Karing Betanak</span>
+            <span class="ttag">Gangan Asam Banjar</span>
+         </div>
+      </div>
+   </div>
+
+
+   <!-- ============================================================
+       HERO / BERANDA UTAMA
+       ============================================================ -->
+   <section id="hero">
+      <div class="hs hs1"></div>
+      <div class="hs hs2"></div>
+      <div class="hbgtxt">Makanan</div>
+
+      <div class="container">
+         <div class="row align-menu-center g-5" style="min-height:88vh;">
+
+            <!-- Kolom kiri: teks, tombol, statistik -->
+            <div class="col-lg-6">
+               <div class="hbadge">
+                  <div class="hbi"><i class="fas fa-star"></i></div>
+                  <span>Pilihan Masakan Banjar Favorit di Banjarmasin</span>
+               </div>
+
+               <h1 class="htitle">Masakan <span class="hl">Banjar</span><br />untuk Setiap Saat</h1>
+
+               <p class="hdesc">Pengalaman makanan khas Banjar dengan cita rasa yang autentik.
+                  Kami menyajikan hidangan khas Banjar yang lezat dan berkualitas tinggi.</p>
+
+               <!-- Tombol aksi: lihat menu & video -->
+               <div class="d-flex flex-wrap gap-3 mb-2">
+                  <a href="#menu" class="btn-red" role="button" aria-label="Lihat Menu Warban">
+                     <i class="fas fa-utensils"></i>Lihat Menu
+                  </a>
+                  <!-- Tombol video (Magnific Popup / YouTube) -->
+                  <a href="https://www.youtube.com/watch?v=RXv_uIN6e-Y" class="btn-play" target="_blank"
+                     rel="noopener noreferrer" aria-label="Lihat Cerita Kami di YouTube">
+                     <div class="pico"><i class="fas fa-play"></i></div>
+                     <span>Lihat Cerita Kami</span>
+                  </a>
+               </div>
+
+               <!-- Statistik singkat -->
+               <div class="hstats d-flex gap-3 flex-wrap mt-4">
+                  <div class="hstat"><span class="snum">850<em>+</em></span><small>Pelanggan Puas</small></div>
+                  <div class="sdiv"></div>
+                  <div class="hstat"><span class="snum">120<em>+</em></span><small>Pilihan Menu</small></div>
+                  <div class="sdiv"></div>
+                  <div class="hstat"><span class="snum">15<em>+</em></span><small>Expert Juru Masak</small></div>
+                  <div class="sdiv"></div>
+                  <div class="hstat"><span class="snum">12<em>yr</em></span><small>Pengalaman</small></div>
+               </div>
+            </div>
+
+            <!-- Kolom kanan: gambar utama & kartu melayang -->
+            <div class="col-lg-6">
+               <div style="position:relative;text-align:center;">
+                  <div class="hcircle">
+                     <img src="img/menu/1.jpg" alt="Burger" />
+                  </div>
+                  <div class="fcard fc1">
+                     <div class="fcoi r"><i class="fas fa-fire"></i></div>
+                     <div><span class="fcnum">Promo Hari Ini</span><span class="fcsm">Diskon 30% hari ini</span></div>
+                  </div>
+                  <div class="fcard fc2">
+                     <div class="fcoi y"><i class="fas fa-star"></i></div>
+                     <div><span class="fcnum">4.9/5</span><span class="fcsm">2k+ ulasan</span></div>
+                  </div>
+                  <div class="fcard fc3">
+                     <div class="fcoi g"><i class="fas fa-clock"></i></div>
+                     <div><span class="fcnum">20 min</span><span class="fcsm">Antar cepat</span></div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       TEKS BERJALAN (MARQUEE)
+       ============================================================ -->
+   <div class="mqsec">
+      <div class="mqtrack">
+         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Goreng Renyah</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Banjar Pilihan</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Masakan Tradisional</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Lauk Pilihan</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Minuman Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Sajian Panggang</div>
+         <!-- Duplikat untuk efek berjalan tanpa putus -->
+         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Goreng Renyah</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Banjar Pilihan</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Masakan Tradisional</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Lauk Pilihan</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Minuman Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Sajian Panggang</div>
+      </div>
+   </div>
+
+
+   <!-- ============================================================
+       KATEGORI MENU
+       ============================================================ -->
+   <section id="category">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Yang Kami Sajikan</span>
+            <h2 class="stitle">Cari berdasarkan <span>Menu</span></h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:480px;">Pilih masakan khas Banjar dari daftar menu yang tersedia.
+            </p>
+         </div>
+
+         <!-- Kartu kategori -->
+         <div class="row g-3 justify-content-center">
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="0">
+               <div class="catcard active" data-filter="all">
+                  <img class="catimg" src="img/menu/1.jpg" alt="Semua Menu" />
+                  <div class="catnm">Semua Menu</div>
+                  <div class="catct">9 menu</div>
+               </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="70">
+               <div class="catcard" data-filter="utama">
+                  <img class="catimg" src="img/menu/5.jpg" alt="Masakan Utama" />
+                  <div class="catnm">Masakan Utama</div>
+                  <div class="catct">1 menu</div>
+               </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="140">
+               <div class="catcard" data-filter="ikan">
+                  <img class="catimg" src="img/menu/3.jpg" alt="Hidangan Ikan" />
+                  <div class="catnm">Hidangan Ikan</div>
+                  <div class="catct">3 menu</div>
+               </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="210">
+               <div class="catcard" data-filter="nasi">
+                  <img class="catimg" src="img/menu/4.jpg" alt="Nasi dan Lauk" />
+                  <div class="catnm">Nasi &amp; Lauk</div>
+                  <div class="catct">1 menu</div>
+               </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="280">
+               <div class="catcard" data-filter="kuah">
+                  <img class="catimg" src="img/menu/2.jpg" alt="Hidangan Berkuah" />
+                  <div class="catnm">Hidangan Berkuah</div>
+                  <div class="catct">3 menu</div>
+               </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2" data-aos="zoom-in" data-aos-delay="350">
+               <div class="catcard" data-filter="kue">
+                  <img class="catimg" src="img/menu/9.jpg" alt="Kue Tradisional" />
+                  <div class="catnm">Kue Tradisional</div>
+                  <div class="catct">1 menu</div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       TENTANG KAMI
+       ============================================================ -->
+   <section id="about">
+      <div class="container">
+         <div class="row align-menu-center g-5">
+
+            <!-- Kolom kiri: tumpukan gambar -->
+            <div class="col-lg-5" data-aos="fade-right">
+               <div class="astack">
+                  <div class="aexp"><span class="anum">12+</span><small>Tahun<br />Berdiri</small></div>
+                  <div class="amain"><img src="img/about1.jpg" alt="Restaurant" /></div>
+                  <div class="asm"><img src="img/about2.jpg" alt="" /></div>
+               </div>
+            </div>
+
+            <!-- Kolom kanan: deskripsi & keunggulan -->
+            <div class="col-lg-7" data-aos="fade-left">
+               <span class="slbl">Tentang Warban</span>
+               <h2 class="stitle text-start">Mari Nikmati<br />Masakan <span>Khas Banjar</span></h2>
+               <div class="sline lft"></div>
+
+               <p class="sdesc mb-4">Warban hadir untuk memperkenalkan kekayaan kuliner Banjar dengan cita rasa rumahan
+                  yang autentik. Kami menyajikan hidangan khas Kalimantan Selatan dengan bahan segar dan penuh
+                  perhatian.</p>
+
+               <!-- Daftar keunggulan -->
+               <div class="mb-4">
+                  <div class="fti">
+                     <div class="ftico r"><i class="fas fa-leaf"></i></div>
+                     <div>
+                        <h6>100% Bahan Segar</h6>
+                        <p>Kami memilih bahan-bahan segar setiap hari agar rasa dan kualitas hidangan tetap terjaga.</p>
+                     </div>
+                  </div>
+                  <div class="fti">
+                     <div class="ftico y"><i class="fas fa-award"></i></div>
+                     <div>
+                        <h6>Resep Khas Banjar</h6>
+                        <p>Resep pilihan kami dibuat dengan bumbu khas Banjar dan cita rasa yang diwariskan dari
+                           generasi ke generasi.</p>
+                     </div>
+                  </div>
+                  <div class="fti">
+                     <div class="ftico g"><i class="fas fa-shipping-fast"></i></div>
+                     <div>
+                        <h6>Antar Cepat</h6>
+                        <p>Pesan secara daring dan nikmati hidangan hangat yang diantar langsung ke tempat Anda.</p>
+                     </div>
+                  </div>
+               </div>
+
+               <a href="#menu" class="btn-red"><i class="fas fa-book-open"></i>Lihat Semua Menu</a>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       DAFTAR MENU (filter kategori + tombol "+" membuka popup detail)
+       ============================================================ -->
+   <section id="menu">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Pilihan Hari Ini</span>
+            <h2 class="stitle"><span>Menu</span> Masakan Khas Banjar</h2>
+            <div class="sline"></div>
+         </div>
+
+         <!-- Tombol filter menu -->
+         <div class="text-center mb-4" data-aos="fade-up">
+            <button class="filtbtn active" data-f="all">Semua</button>
+            <button class="filtbtn" data-f="utama">Masakan Utama</button>
+            <button class="filtbtn" data-f="ikan">Hidangan Ikan</button>
+            <button class="filtbtn" data-f="nasi">Nasi &amp; Lauk</button>
+            <button class="filtbtn" data-f="kuah">Hidangan Berkuah</button>
+            <button class="filtbtn" data-f="kue">Kue Tradisional</button>
+         </div>
+
+         <!-- Grid kartu menu -->
+         <div class="row g-4" id="mgrid">
+
+            <!-- Kartu 1: Soto Banjar -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up">
+               <div class="mcard" data-img="img/menu/2.jpg" data-title="Soto Banjar" data-cat="Hidangan Berkuah"
+                  data-price="Rp25.000" data-old="Rp30.000" data-rating="4.9" data-ulasan="128" data-cal="320"
+                  data-time="12"
+                  data-desc="Soto khas Banjar dengan kuah gurih berbumbu rempah, suwiran ayam, telur, soun, perkedel dan taburan bawang goreng."
+                  data-tags="Khas Banjar,Hangat,Terlaris">
+                  <div class="mimg">
+                     <img src="img/menu/2.jpg" alt="Soto Banjar" />
+                     <div class="mbdg hot"><i class="fas fa-star"></i> Terlaris</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Berkuah</div>
+                     <div class="mtit">Soto Banjar</div>
+                     <div class="mdesc">Kuah rempah gurih dengan ayam suwir, telur, soun, perkedel dan bawang goreng
+                     </div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp25.000 <small>Rp30.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(128)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 2: Ikan Patin Baubar -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="80">
+               <div class="mcard" data-img="img/menu/3.jpg" data-title="Ikan Patin Baubar" data-cat="Hidangan Ikan"
+                  data-price="Rp32.000" data-old="Rp38.000" data-rating="4.8" data-ulasan="95" data-cal="410"
+                  data-time="18"
+                  data-desc="Ikan patin yang dibakar hingga harum lalu disajikan dengan bumbu khas Banjar yang gurih dan kaya rempah."
+                  data-tags="Ikan,Khas Banjar,Panggang">
+                  <div class="mimg">
+                     <img src="img/menu/3.jpg" alt="Ikan Patin Baubar" />
+                     <div class="mbdg new"><i class="fas fa-star"></i> Baru</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Ikan</div>
+                     <div class="mtit">Ikan Patin Baubar</div>
+                     <div class="mdesc">Ikan patin bakar harum dengan bumbu khas Banjar yang gurih dan kaya rempah</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp32.000 <small>Rp38.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(95)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 3: Nasi Kuning Banjar -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="nasi" data-aos="fade-up" data-aos-delay="160">
+               <div class="mcard" data-img="img/menu/4.jpg" data-title="Nasi Kuning Banjar" data-cat="Nasi & Lauk"
+                  data-price="Rp22.000" data-old="Rp27.000" data-rating="4.9" data-ulasan="110" data-cal="520"
+                  data-time="15"
+                  data-desc="Nasi kuning gurih khas Banjar disajikan dengan lauk berbumbu, serundeng, telur dan pelengkap segar."
+                  data-tags="Nasi,Khas Banjar,Hangat">
+                  <div class="mimg">
+                     <img src="img/menu/4.jpg" alt="Nasi Kuning Banjar" />
+                     <div class="mbdg"><i class="fas fa-star"></i> Favorit</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Nasi &amp; Lauk</div>
+                     <div class="mtit">Nasi Kuning Banjar</div>
+                     <div class="mdesc">Nasi kuning gurih dengan lauk berbumbu, serundeng, telur dan pelengkap segar
+                     </div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp22.000 <small>Rp27.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(110)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 4: Ayam Masak Habang -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="utama" data-aos="fade-up">
+               <div class="mcard" data-img="img/menu/5.jpg" data-title="Ayam Masak Habang" data-cat="Masakan Utama"
+                  data-price="Rp28.000" data-old="Rp33.000" data-rating="4.9" data-ulasan="140" data-cal="460"
+                  data-time="15"
+                  data-desc="Ayam dimasak dengan bumbu habang khas Banjar yang kaya rempah, gurih, harum dan memiliki rasa pedas manis yang khas."
+                  data-tags="Ayam,Khas Banjar,Pedas">
+                  <div class="mimg">
+                     <img src="img/menu/5.jpg" alt="Ayam Masak Habang" />
+                     <div class="mbdg hot"><i class="fas fa-star"></i> Favorit</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Masakan Utama</div>
+                     <div class="mtit">Ayam Masak Habang</div>
+                     <div class="mdesc">Ayam dengan bumbu habang khas Banjar yang gurih, harum dan pedas manis</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp28.000 <small>Rp33.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(140)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 5: Iwak Karing Betanak -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="80">
+               <div class="mcard" data-img="img/menu/6.jpg" data-title="Iwak Karing Betanak" data-cat="Hidangan Ikan"
+                  data-price="Rp25.000" data-old="Rp29.000" data-rating="4.8" data-ulasan="88" data-cal="390"
+                  data-time="15"
+                  data-desc="Ikan kering yang dimasak bersama santan dan bumbu rempah Banjar hingga menghasilkan rasa gurih dan harum."
+                  data-tags="Ikan,Santan,Khas Banjar">
+                  <div class="mimg">
+                     <img src="img/menu/6.jpg" alt="Iwak Karing Betanak" />
+                     <div class="mbdg new"><i class="fas fa-star"></i> Baru</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Ikan</div>
+                     <div class="mtit">Iwak Karing Betanak</div>
+                     <div class="mdesc">Ikan kering dimasak santan dan rempah Banjar dengan cita rasa gurih dan harum
+                     </div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp25.000 <small>Rp29.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(88)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 6: Gangan Asam Banjar -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up" data-aos-delay="160">
+               <div class="mcard" data-img="img/menu/7.jpg" data-title="Gangan Asam Banjar" data-cat="Hidangan Berkuah"
+                  data-price="Rp24.000" data-old="Rp28.000" data-rating="4.8" data-ulasan="76" data-cal="280"
+                  data-time="14"
+                  data-desc="Sayur berkuah asam khas Banjar dengan ikan dan sayuran segar, menghasilkan rasa segar, gurih dan sedikit pedas."
+                  data-tags="Segar,Kuah,Khas Banjar">
+                  <div class="mimg">
+                     <img src="img/menu/7.jpg" alt="Gangan Asam Banjar" />
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Berkuah</div>
+                     <div class="mtit">Gangan Asam Banjar</div>
+                     <div class="mdesc">Kuah asam khas Banjar dengan ikan dan sayuran segar, gurih dan menyegarkan</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp24.000 <small>Rp28.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(76)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 7: Lontong Banjar -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up">
+               <div class="mcard" data-img="img/menu/8.jpg" data-title="Lontong Banjar" data-cat="Hidangan Berkuah"
+                  data-price="Rp20.000" data-old="Rp24.000" data-rating="4.8" data-ulasan="64" data-cal="430"
+                  data-time="12"
+                  data-desc="Lontong khas Banjar dengan kuah santan berbumbu, sayuran dan pelengkap yang membuatnya gurih serta mengenyangkan."
+                  data-tags="Lontong,Santan,Khas Banjar">
+                  <div class="mimg">
+                     <img src="img/menu/8.jpg" alt="Lontong Banjar" />
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Berkuah</div>
+                     <div class="mtit">Lontong Banjar</div>
+                     <div class="mdesc">Lontong dengan kuah santan berbumbu dan sayuran, gurih serta mengenyangkan</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp20.000 <small>Rp24.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(64)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 8: Bingka -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="kue" data-aos="fade-up" data-aos-delay="80">
+               <div class="mcard" data-img="img/menu/9.jpg" data-title="Bingka" data-cat="Kue Tradisional"
+                  data-price="Rp15.000" data-old="Rp18.000" data-rating="4.9" data-ulasan="102" data-cal="310"
+                  data-time="8"
+                  data-desc="Kue tradisional Banjar yang lembut dan harum, dibuat dari adonan kaya telur dan santan dengan tekstur lembut di bagian dalam."
+                  data-tags="Manis,Kue Tradisional,Khas Banjar">
+                  <div class="mimg">
+                     <img src="img/menu/9.jpg" alt="Bingka" />
+                     <div class="mbdg new"><i class="fas fa-star"></i> Favorit</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Kue Tradisional</div>
+                     <div class="mtit">Bingka</div>
+                     <div class="mdesc">Kue tradisional Banjar yang lembut, harum dan kaya rasa santan serta telur</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp15.000 <small>Rp18.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(102)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kartu 9: Pais Patin -->
+            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="160">
+               <div class="mcard" data-img="img/menu/10.jpg" data-title="Pais Patin" data-cat="Hidangan Ikan"
+                  data-price="Rp30.000" data-old="Rp35.000" data-rating="4.9" data-ulasan="91" data-cal="440"
+                  data-time="18"
+                  data-desc="Ikan patin berbumbu rempah dan cabai yang dibungkus daun lalu dimasak hingga bumbu meresap dan aromanya semakin harum."
+                  data-tags="Ikan,Rempah,Khas Banjar">
+                  <div class="mimg">
+                     <img src="img/menu/10.jpg" alt="Pais Patin" />
+                     <div class="mbdg hot"><i class="fas fa-star"></i> Pilihan</div>
+                     <div class="mhrt"><i class="far fa-heart"></i></div>
+                  </div>
+                  <div class="mbody">
+                     <div class="mcat">Hidangan Ikan</div>
+                     <div class="mtit">Pais Patin</div>
+                     <div class="mdesc">Patin berbumbu rempah dan cabai, dimasak hingga bumbu meresap dan harum</div>
+                     <div class="mfoot">
+                        <div>
+                           <div class="mprice">Rp30.000 <small>Rp35.000</small></div>
+                           <div class="mstars"><i class="fas fa-star"></i> <span
+                                 style="color:#bbb;font-size:.7rem;">(91)</span></div>
+                        </div>
+                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+         <!-- Akhir #mgrid -->
+
+         <div class="text-center mt-5"><a href="#" class="btn-red"><i class="fas fa-th-large"></i>Lihat Semua Menu</a>
+         </div>
+
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       POPUP DETAIL MENU
+       ============================================================ -->
+   <div id="menuPop">
+      <div class="mpbox">
+         <button class="mpclose" id="mpClose"><i class="fas fa-times"></i></button>
+
+         <!-- Gambar menu -->
+         <div class="mpimg"><img id="mpImg" src="" alt="" /></div>
+
+         <!-- Isi detail menu (diisi oleh JavaScript) -->
+         <div class="mpbody">
+            <div id="mpCat"></div>
+            <div id="mpTitle"></div>
+            <div id="mpStars"></div>
+            <div id="mpDesc"></div>
+            <div id="mpPrice"></div>
+            <div class="mpmeta" id="mpMeta"></div>
+
+            <!-- Pengatur jumlah porsi -->
+            <div class="mpqty">
+               <button class="mpqbtn" id="mpMinus">-</button>
+               <span class="mpqnum" id="mpQnum">1</span>
+               <button class="mpqbtn" id="mpPlus">+</button>
+               <span style="font-size:.82rem;color:#aaa;margin-left:9px;">porsi</span>
+            </div>
+
+            <div class="mptags" id="mpTags"></div>
+            <button class="mpaddcart" id="mpAddCart"><i class="fas fa-shopping-cart"></i>Tambah Pesanan</button>
+         </div>
+      </div>
+   </div>
+
+
+   <!-- ============================================================
+       PROMO KHUSUS (DISKON & COUNTDOWN)
+       ============================================================ -->
+   <section id="special">
+      <div class="spbg"></div>
+      <div class="container" style="position:relative;z-index:2;">
+         <div class="row align-menu-center g-5">
+
+            <!-- Kolom kiri: teks promo & hitung mundur -->
+            <div class="col-lg-6" data-aos="fade-right">
+               <div class="sptag"><i class="fas fa-bolt me-1"></i>Promo Terbatas</div>
+               <h2 class="sptitle">Diskon 30%<br />Hidangan Khas<br /><span>Banjar</span></h2>
+               <p class="spdesc">Jangan lewatkan kesempatan ini! Diskon 30% untuk hidangan khas Banjar. Jangan lewatkan
+                  kesempatan ini!</p>
+
+               <!-- Hitung mundur -->
+               <div class="cdwrap">
+                  <div class="cditem"><span class="cdnum" id="cdH">08</span><span class="cdlbl">Jam</span></div>
+                  <div class="cditem"><span class="cdnum" id="cdM">45</span><span class="cdlbl">Menit</span></div>
+                  <div class="cditem"><span class="cdnum" id="cdS">30</span><span class="cdlbl">Detik</span></div>
+               </div>
+
+               <a href="#menu" class="btn-red"><i class="fas fa-shopping-cart"></i>Ambil Promo</a>
+            </div>
+
+            <!-- Kolom kanan: gambar & harga promo -->
+            <div class="col-lg-6" data-aos="fade-left">
+               <div class="spimgw">
+                  <div class="spglow"></div>
+                  <div class="sppbdg"><span class="old">Rp30.000</span><span class="np">Rp25.000</span></div>
+                  <img src="img/off-img.jpg" alt="Special Burger" />
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       GALERI MASAKAN (klik gambar membuka popup detail)
+       ============================================================ -->
+   <section id="gallery">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Galeri Masakan</span>
+            <h2 class="stitle">Lihat <span>Masakan Banjar</span> Kami</h2>
+            <div class="sline"></div>
+         </div>
+
+         <!-- Grid galeri -->
+         <div class="ggrid" data-aos="fade-up">
+            <div class="gitem" data-gi="0" data-gimg="img/menu/2.jpg" data-gtitle="Soto Banjar"
+               data-gdesc="Soto khas Banjar dengan kuah gurih dan rempah yang harum, disajikan dengan suwiran ayam, telur, serta pelengkap khas.">
+               <img src="img/menu/2.jpg" alt="Soto Banjar" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Soto Banjar</span></div>
+            </div>
+            <div class="gitem" data-gi="1" data-gimg="img/menu/3.jpg" data-gtitle="Ikan Patin Baubar"
+               data-gdesc="Ikan patin berbumbu khas Banjar yang dimasak hingga meresap, menghasilkan cita rasa gurih, pedas, dan harum rempah.">
+               <img src="img/menu/3.jpg" alt="Ikan Patin Baubar" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Ikan Patin Baubar</span></div>
+            </div>
+            <div class="gitem" data-gi="2" data-gimg="img/menu/4.jpg" data-gtitle="Nasi Kuning Banjar"
+               data-gdesc="Nasi kuning gurih beraroma rempah khas Banjar, disajikan bersama lauk dan pelengkap yang menggugah selera.">
+               <img src="img/menu/4.jpg" alt="Nasi Kuning Banjar" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Nasi Kuning Banjar</span></div>
+            </div>
+            <div class="gitem" data-gi="3" data-gimg="img/menu/5.jpg" data-gtitle="Ayam Masak Habang"
+               data-gdesc="Ayam dengan bumbu habang khas Banjar yang kaya rempah, memiliki cita rasa gurih, manis, dan pedas yang khas.">
+               <img src="img/menu/5.jpg" alt="Ayam Masak Habang" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Ayam Masak Habang</span></div>
+            </div>
+            <div class="gitem" data-gi="4" data-gimg="img/menu/6.jpg" data-gtitle="Iwak Karing Betanak"
+               data-gdesc="Olahan iwak karing khas Banjar dengan perpaduan bumbu dan rempah yang menghasilkan rasa gurih dan nikmat.">
+               <img src="img/menu/6.jpg" alt="Iwak Karing Betanak" />
+               <div class="gover"><span><i class="fas fa-expand-alt"></i> Iwak Karing Betanak</span></div>
+            </div>
+         </div>
+
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       POPUP GALERI
+       ============================================================ -->
+   <div id="galPop">
+      <div class="gpbox">
+         <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
+         <img id="gpImg" src="" alt="" />
+
+         <!-- Keterangan gambar -->
+         <div class="gpcap">
+            <h5 id="gpTitle"></h5>
+            <p id="gpDesc"></p>
+         </div>
+
+         <!-- Tombol sebelumnya / berikutnya -->
+         <div class="gpnav">
+            <button id="gpPrev"><i class="fas fa-chevron-left me-1"></i>Prev</button>
+            <button id="gpNext">Next <i class="fas fa-chevron-right ms-1"></i></button>
+         </div>
+      </div>
+   </div>
+
+
+   <!-- ============================================================
+       SEJARAH / TIMELINE (teks kiri-kanan bergantian)
+       ============================================================ -->
+   <section id="history">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Perjalanan Kami</span>
+            <h2 class="stitle">Sejarah <span>Warban</span></h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:480px;">Berawal dari kecintaan terhadap kuliner Banjar, Warban
+               terus berkembang untuk menyajikan hidangan tradisional yang disukai banyak orang.</p>
+         </div>
+
+         <!-- Garis waktu -->
+         <div class="timeline" data-aos="fade-up">
+
+            <!-- Item 1 (ganjil: teks di kiri) -->
+            <div class="tli">
+               <div class="tl-left">
+                  <div class="tlyear">2012</div>
+                  <h5>Awal Berdirinya Warban</h5>
+                  <p>Warban dimulai sebagai usaha kecil yang berfokus pada penyajian kuliner tradisional Banjar.</p>
+               </div>
+               <div class="tl-center">
+                  <div class="tldot"></div>
+               </div>
+               <div class="tl-right">
+                  <div class="tlyear">2012</div>
+                  <h5>Awal Berdirinya Warban</h5>
+                  <p>Warban dimulai sebagai usaha kecil yang berfokus pada penyajian kuliner tradisional Banjar.</p>
+               </div>
+            </div>
+
+            <!-- Item 2 (genap: teks di kanan) -->
+            <div class="tli">
+               <div class="tl-left">
+                  <div class="tlyear">2015</div>
+                  <h5>Mengembangkan Sajian Banjar</h5>
+                  <p>Warban mulai mengembangkan berbagai sajian kuliner Banjar yang lebih variatif dan menarik.</p>
+               </div>
+               <div class="tl-center">
+                  <div class="tldot"></div>
+               </div>
+               <div class="tl-right">
+                  <div class="tlyear">2015</div>
+                  <h5>Mengembangkan Sajian Banjar</h5>
+                  <p>Warban mulai mengembangkan berbagai sajian kuliner Banjar yang lebih variatif dan menarik.</p>
+               </div>
+            </div>
+
+            <!-- Item 3 (ganjil: teks di kiri) -->
+            <div class="tli">
+               <div class="tl-left">
+                  <div class="tlyear">2019</div>
+                  <h5>Menghadirkan Kuliner Banjar</h5>
+                  <p>Warban menghadirkan berbagai kuliner Banjar yang autentik dan lezat.</p>
+               </div>
+               <div class="tl-center">
+                  <div class="tldot"></div>
+               </div>
+               <div class="tl-right">
+                  <div class="tlyear">2019</div>
+                  <h5>Menghadirkan Kuliner Banjar</h5>
+                  <p>Warban menghadirkan berbagai kuliner Banjar yang autentik dan lezat.</p>
+               </div>
+            </div>
+
+            <!-- Item 4 (genap: teks di kanan) -->
+            <div class="tli">
+               <div class="tl-left">
+                  <div class="tlyear">2026</div>
+                  <h5>Warban Saat Ini</h5>
+                  <p>Warban saat ini sedang berkembang pesat dan menawarkan berbagai kuliner Banjar yang autentik dan
+                     lezat di beberapa kota di Amerika Serikat.</p>
+               </div>
+               <div class="tl-center">
+                  <div class="tldot"></div>
+               </div>
+               <div class="tl-right">
+                  <div class="tlyear">2026</div>
+                  <h5>Warban Saat Ini</h5>
+                  <p>Warban saat ini sedang berkembang pesat dan menawarkan berbagai kuliner Banjar yang autentik dan
+                     lezat di beberapa kota di Amerika Serikat.</p>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       JURU MASAK
+       ============================================================ -->
+   <section id="chefs">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Tim Dapur</span>
+            <h2 class="stitle">Bertemu Dengan <span>Juru Masak</span></h2>
+            <div class="sline"></div>
+         </div>
+
+         <!-- Kartu juru masak -->
+         <div class="row g-4">
+
+            <!-- Juru masak 1 -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+               <div class="chcard">
+                  <div class="chimg">
+                     <img src="img/chefs/cewe.jpg" alt="" />
+                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                  </div>
+                  <div class="chbody">
+                     <div class="chnm">Aisyah Banjar</div>
+                     <div class="chrole">Juru Masak Utama</div>
+                     <div class="chexp">12 tahun pengalaman</div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Juru masak 2 -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
+               <div class="chcard">
+                  <div class="chimg">
+                     <img src="img/chefs/cowo.jpg" alt="" />
+                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                  </div>
+                  <div class="chbody">
+                     <div class="chnm">M. Fajar</div>
+                     <div class="chrole">Ahli Panggang</div>
+                     <div class="chexp">8 tahun pengalaman</div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Juru masak 3 -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
+               <div class="chcard">
+                  <div class="chimg">
+                     <img src="img/chefs/cewe.jpg" alt="" />
+                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                  </div>
+                  <div class="chbody">
+                     <div class="chnm">Siti Rahmah</div>
+                     <div class="chrole">Ahli Kue Tradisional</div>
+                     <div class="chexp">10 tahun pengalaman</div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Juru masak 4 -->
+            <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
+               <div class="chcard">
+                  <div class="chimg">
+                     <img src="img/chefs/cowo.jpg" alt="" />
+                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
+                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                  </div>
+                  <div class="chbody">
+                     <div class="chnm">Rizky Maulana</div>
+                     <div class="chrole">Hidangan Ikan Artisan</div>
+                     <div class="chexp">9 tahun pengalaman</div>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       JAM BUKA & LOKASI
+       ============================================================ -->
+   <section id="hours">
+      <div class="hrsbg"></div>
+      <div class="container" style="position:relative;z-index:2;">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl" style="color:#a5d6bc;">Opening Jam</span>
+            <h2 class="stitle" style="color:#fff;">Kami <span style="color:var(--secondary);">Buka untuk Anda</span>
+            </h2>
+            <div class="sline"></div>
+         </div>
+
+         <div class="row g-4 align-menu-start">
+
+            <!-- Kolom 1: jadwal buka -->
+            <div class="col-lg-5" data-aos="fade-right">
+               <div class="hrscard">
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Sabtu
+                        - Minggu</span>
+                     <div class="d-flex align-menu-center gap-2">
+                        <div class="hdot off"></div>
+                        <span class="hrstime" style="color:#ff6b6b;">Tutup</span>
+                     </div>
+                  </div>
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Senin
+                        - Selasa</span>
+                     <div class="d-flex align-menu-center gap-2">
+                        <div class="hdot on"></div>
+                        <span class="hrstime">09:00 AM - 10:00 PM</span>
+                     </div>
+                  </div>
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2"
+                           style="color:var(--secondary);"></i>Rabu</span>
+                     <div class="d-flex align-menu-center gap-2">
+                        <div class="hdot on"></div>
+                        <span class="hrstime">09:00 AM - 11:00 PM</span>
+                     </div>
+                  </div>
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2"
+                           style="color:var(--secondary);"></i>Kamis</span>
+                     <div class="d-flex align-menu-center gap-2">
+                        <div class="hdot on"></div>
+                        <span class="hrstime">10:00 AM - 11:30 PM</span>
+                     </div>
+                  </div>
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2"
+                           style="color:var(--secondary);"></i>Jumat</span>
+                     <div class="d-flex align-menu-center gap-2">
+                        <div class="hdot on"></div>
+                        <span class="hrstime">11:00 AM - 09:00 PM</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kolom 2: ajakan pesan daring -->
+            <div class="col-lg-3" data-aos="zoom-in">
+               <div class="hrscta">
+                  <i class="fas fa-truck-fast fa-2x mb-3" style="color:rgba(255,255,255,.8);"></i>
+                  <h4>Pesan Daring</h4>
+                  <p>Hidangan hangat diantar dalam 25 menit</p>
+                  <a href="#menu" class="btnw">Pesan Sekarang</a>
+               </div>
+            </div>
+
+            <!-- Kolom 3: alamat & kontak -->
+            <div class="col-lg-4" data-aos="fade-left">
+               <div class="hrscard">
+                  <h5
+                     style="color:#fff;margin-bottom:18px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;">
+                     <i class="fas fa-map-marker-alt me-2" style="color:var(--secondary);"></i>Temukan Kami
+                  </h5>
+                  <div class="hrsrow"><span class="hrsday"><i class="fas fa-location-dot me-2"
+                           style="color:var(--secondary);"></i>Alamat</span><span class="hrstime"
+                        style="font-size:.8rem;">Kayu Tangi II, Banjarmasin</span></div>
+                  <div class="hrsrow"><span class="hrsday"><i class="fas fa-phone me-2"
+                           style="color:var(--secondary);"></i>Telepon</span><span class="hrstime"
+                        style="font-size:.8rem;">+62 808-5410-098</span></div>
+                  <div class="hrsrow"><span class="hrsday"><i class="fas fa-envelope me-2"
+                           style="color:var(--secondary);"></i>Surel</span><span class="hrstime"
+                        style="font-size:.8rem;">warban@gmail.com</span></div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       ULASAN PELANGGAN (SLIDER SWIPER)
+       ============================================================ -->
+   <section id="testimonials">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Kata Pelanggan</span>
+            <h2 class="stitle"><span>Ulasan</span> Pelanggan Kami</h2>
+            <div class="sline"></div>
+         </div>
+
+         <div class="swiper tesSwiper" data-aos="fade-up">
+            <div class="swiper-wrapper">
+
+               <!-- Ulasan 1: Maya -->
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Sejujurnya, warban memiliki menu yang sangat lengkap dan harganya sangat
+                        terjangkau</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/1.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Maya</div>
+                           <div class="tesrl">Pelanggan Setia</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Ulasan 2: Rian -->
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Pesanan delivery tiba dengan panas dan segar dalam 22 menit. Porsi yang diberikan
+                        sangat besar. Warban telah menjadi tempat makan favorit saya tanpa diragukan.</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/2.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Rian</div>
+                           <div class="tesrl">Pecinta Kuliner</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Ulasan 3: Nadia -->
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Harga yang terjangkau dan menu yang lengkap. Makanan yang segar dan nikmat</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/3.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Nadia</div>
+                           <div class="tesrl">Penikmat Kuliner</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               <!-- Ulasan 4: Dimas -->
+               <div class="swiper-slide">
+                  <div class="tescard">
+                     <div class="tesq">"</div>
+                     <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                           class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                     <p class="testxt">Soto warban sangat nikmat dan segar</p>
+                     <div class="tesauth">
+                        <img src="img/testimonial/4.jpg" alt="" />
+                        <div>
+                           <div class="tesnm">Dimas</div>
+                           <div class="tesrl">Pelanggan Acara</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+
+            <!-- Pagination slider -->
+            <div class="swiper-pagination mt-4" style="position:static;"></div>
+         </div>
+
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       FORMULIR RESERVASI
+       ============================================================ -->
+   <section id="reservation">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Pesan Tempat</span>
+            <h2 class="stitle">Buat <span>Reservasi</span></h2>
+            <div class="sline"></div>
+            <p class="sdesc mx-auto" style="max-width:480px;">Pesan tempat Anda untuk menikmati hidangan khas Banjar
+               bersama keluarga dan teman. Kami menyarankan melakukan reservasi terlebih dahulu.</p>
+         </div>
+
+         <div class="row g-4 align-menu-start">
+
+            <!-- Kolom kiri: info kontak reservasi -->
+            <div class="col-lg-4" data-aos="fade-right">
+               <div style="background:var(--dark);border-radius:18px;padding:36px;">
+                  <h4 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Kontak Info</h4>
+                  <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:26px;">Kami siap membantu Anda
+                     merencanakan waktu makan yang menyenangkan.</p>
+
+                  <div class="d-flex flex-column gap-3">
+
+                     <!-- Jam buka -->
+                     <div class="d-flex align-menu-center gap-3">
+                        <div
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           <i class="fas fa-clock"></i>
+                        </div>
+                        <div><strong
+                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Jam
+                              Buka</strong><span style="color:#fff;font-size:.87rem;">Senin - Minggu, 09.00 -
+                              22.00</span>
+                        </div>
+                     </div>
+
+                     <!-- Telepon -->
+                     <div class="d-flex align-menu-center gap-3">
+                        <div
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div><strong
+                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Pesan
+                              Tempat</strong><span style="color:#fff;font-size:.87rem;">+62 808-5410-098</span>
+                        </div>
+                     </div>
+
+                     <!-- Makan bersama -->
+                     <div class="d-flex align-menu-center gap-3">
+                        <div
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           <i class="fas fa-users"></i>
+                        </div>
+                        <div><strong
+                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Makan
+                              Bersama</strong><span style="color:#fff;font-size:.87rem;">Menu khusus untuk 10+
+                              guests</span></div>
+                     </div>
+
+                     <!-- Lokasi -->
+                     <div class="d-flex align-menu-center gap-3">
+                        <div
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div><strong
+                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Lokasi</strong><span
+                              style="color:#fff;font-size:.87rem;">Kayu Tangi II, Banjarmasin</span></div>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+            <!-- Kolom kanan: form reservasi -->
+            <div class="col-lg-8" data-aos="fade-left">
+               <div class="fcard">
+                  <div class="row g-3">
+                     <div class="col-sm-6"><label class="flbl">Nama Lengkap *</label><input type="text" class="fctrl"
+                           placeholder="John Doe" /></div>
+                     <div class="col-sm-6"><label class="flbl">Nomor Telepon *</label><input type="tel" class="fctrl"
+                           placeholder="+62 8xx-xxxx-xxxx" /></div>
+                     <div class="col-sm-6"><label class="flbl">Surel Alamat *</label><input type="email" class="fctrl"
+                           placeholder="you@email.com" /></div>
+
+                     <!-- Jumlah tamu -->
+                     <div class="col-sm-6">
+                        <label class="flbl">Jumlah Tamu *</label>
+                        <select class="fctrl">
+                           <option>1 Orang</option>
+                           <option>2 Orang</option>
+                           <option>3 - 4 Orang</option>
+                           <option>5 - 6 Orang</option>
+                           <option>7 -10 Orang</option>
+                           <option>10+ Orang</option>
+                        </select>
+                     </div>
+
+                     <!-- Tanggal -->
+                     <div class="col-sm-6"><label class="flbl">Date *</label><input type="date" class="fctrl" /></div>
+
+                     <!-- Waktu -->
+                     <div class="col-sm-6">
+                        <label class="flbl">Time *</label>
+                        <select class="fctrl">
+                           <option>09:00 AM</option>
+                           <option>10:00 AM</option>
+                           <option>11:00 AM</option>
+                           <option>12:00 PM</option>
+                           <option>01:00 PM</option>
+                           <option>02:00 PM</option>
+                           <option>06:00 PM</option>
+                           <option>07:00 PM</option>
+                           <option>08:00 PM</option>
+                           <option>09:00 PM</option>
+                           <option>10:00 PM</option>
+                        </select>
+                     </div>
+
+                     <!-- Catatan khusus -->
+                     <div class="col-12"><label class="flbl">Catatan Khusus</label><textarea class="fctrl" rows="3"
+                           placeholder="Alergi, kebutuhan diet, perayaan khusus..."></textarea></div>
+
+                     <!-- Tombol kirim -->
+                     <div class="col-12"><button class="btn-red w-100 justify-content-center" id="resBtn"><i
+                              class="fas fa-calendar-check"></i>Reservasi</button></div>
+                  </div>
+
+                  <!-- Pesan sukses reservasi -->
+                  <div class="sucmsg" id="resOk">
+                     <i class="fas fa-check-circle"></i>
+                     <p>Reservasi berhasil! Kami akan segera mengonfirmasi pesanan Anda.</p>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+      <br />
+   </section>
+
+
+   <!-- ============================================================
+       LANGGANAN INFORMASI (NEWSLETTER)
+       ============================================================ -->
+   <section id="newsletter">
+      <div class="nlbg"></div>
+      <div class="container">
+         <div class="nlw text-center" data-aos="zoom-in">
+            <span class="slbl" style="color:rgba(255,255,255,.7);">Tetap Terhubung</span>
+            <h2 class="mb-3" style="color:#fff;">Berlangganan &amp; Dapatkan <span
+                  style="color:var(--secondary);">Promo</span></h2>
+            <p class="mb-4" style="color:rgba(255,255,255,.78);">Dapatkan informasi terbaru seputar Warban</p>
+
+            <!-- Form email langganan -->
+            <div class="nl-form-wrap">
+               <input class="nlinput" type="email" id="nlSurel" placeholder="Masukkan alamat surel Anda..." />
+               <button class="nlbtn" id="nlBtn"><i class="fas fa-paper-plane me-1"></i>Berlangganan</button>
+            </div>
+
+            <p style="color:rgba(255,255,255,.45);font-size:.76rem;margin-top:11px;"><i
+                  class="fas fa-lock me-1"></i>Tanpa spam, Anda dapat berhenti berlangganan kapan saja.</p>
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       KONTAK KAMI
+       ============================================================ -->
+   <section id="contact-section">
+      <div class="container">
+
+         <!-- Judul section -->
+         <div class="text-center mb-5" data-aos="fade-up">
+            <span class="slbl">Hubungi Kami</span>
+
+            <h2 class="stitle">
+               Kontak <span>Kami</span>
+            </h2>
+
+            <div class="sline"></div>
+
+            <p class="sdesc mx-auto" style="max-width:520px;">
+               Punya pertanyaan, saran, atau ingin mengadakan acara bersama Warban?
+               Kami siap membantu dan mendengar kebutuhan Anda.
+            </p>
+         </div>
+
+         <div class="row g-4">
+
+            <!-- Informasi kontak -->
+            <div class="col-lg-4" data-aos="fade-right">
+               <div class="ctdark">
+
+                  <h4>Mari Bicara</h4>
+
+                  <p class="ctsub">
+                     Silakan hubungi kami melalui informasi di bawah ini.
+                     Kami siap melayani Anda selama jam operasional.
+                  </p>
+
+                  <!-- Alamat -->
+                  <div class="ctitem">
+                     <div class="cticon">
+                        <i class="fas fa-map-marker-alt"></i>
+                     </div>
+
+                     <div class="ctinfo">
+                        <strong>Alamat</strong>
+                        <span>
+                           Kayu Tangi II,<br>
+                           Banjarmasin, Kalimantan Selatan
+                        </span>
+                     </div>
+                  </div>
+
+                  <!-- Telepon -->
+                  <div class="ctitem">
+                     <div class="cticon">
+                        <i class="fas fa-phone-alt"></i>
+                     </div>
+
+                     <div class="ctinfo">
+                        <strong>Telepon</strong>
+                        <span>
+                           +62 808-5410-098
+                        </span>
+                     </div>
+                  </div>
+
+                  <!-- Email -->
+                  <div class="ctitem">
+                     <div class="cticon">
+                        <i class="fas fa-envelope"></i>
+                     </div>
+
+                     <div class="ctinfo">
+                        <strong>Email</strong>
+                        <span>
+                           warban@gmail.com
+                        </span>
+                     </div>
+                  </div>
+
+                  <!-- Jam operasional -->
+                  <div class="ctitem">
+                     <div class="cticon">
+                        <i class="fas fa-clock"></i>
+                     </div>
+
+                     <div class="ctinfo">
+                        <strong>Jam Operasional</strong>
+                        <span>
+                           Senin - Minggu<br>
+                           09.00 - 22.00 WIB
+                        </span>
+                     </div>
+                  </div>
+
+                  <!-- Sosial media -->
+                  <div class="ctsocrow">
+                     <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                     </a>
+                     <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                     </a>
+                     <a href="#" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                     </a>
+                     <a href="#" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                     </a>
+                  </div>
+
+               </div>
+            </div>
+
+            <!-- Form kontak -->
+            <div class="col-lg-8" data-aos="fade-left">
+               <div class="fcard">
+                  <div class="row g-3">
+
+                     <!-- Nama -->
+                     <div class="col-sm-6">
+                        <label class="flbl">
+                           Nama Anda *
+                        </label>
+                        <input type="text" class="fctrl" placeholder="Masukkan nama lengkap" required>
+                     </div>
+
+                     <!-- Email -->
+                     <div class="col-sm-6">
+                        <label class="flbl">
+                           Alamat Email *
+                        </label>
+                        <input type="email" class="fctrl" placeholder="nama@email.com" required>
+                     </div>
+
+                     <!-- Telepon -->
+                     <div class="col-sm-6">
+                        <label class="flbl">
+                           Nomor Telepon
+                        </label>
+                        <input type="tel" class="fctrl" placeholder="+62 8xx-xxxx-xxxx">
+                     </div>
+
+                     <!-- Keperluan -->
+                     <div class="col-sm-6">
+                        <label class="flbl">
+                           Keperluan *
+                        </label>
+                        <select class="fctrl" required>
+                           <option value="">
+                              Pilih keperluan
+                           </option>
+                           <option value="umum">
+                              Pertanyaan Umum
+                           </option>
+                           <option value="reservasi">
+                              Reservasi
+                           </option>
+                           <option value="katering">
+                              Katering &amp; Acara
+                           </option>
+                           <option value="menu">
+                              Informasi Menu
+                           </option>
+                           <option value="saran">
+                              Saran &amp; Masukan
+                           </option>
+                           <option value="kerjasama">
+                              Kerja Sama
+                           </option>
+                        </select>
+                     </div>
+
+                     <!-- Pesan -->
+                     <div class="col-12">
+                        <label class="flbl">
+                           Pesan *
+                        </label>
+                        <textarea class="fctrl" rows="5" placeholder="Tuliskan pesan Anda di sini..."
+                           required></textarea>
+                     </div>
+
+                     <!-- Tombol kirim -->
+                     <div class="col-12">
+                        <button type="button" class="btn-red" id="ctcBtn">
+                           <i class="fas fa-paper-plane"></i>
+                           Kirim Pesan
+                        </button>
+                     </div>
+
+                  </div>
+
+                  <!-- Pesan sukses -->
+                  <div class="sucmsg" id="ctcOk">
+                     <i class="fas fa-check-circle"></i>
+                     <p>
+                        Pesan berhasil dikirim!
+                        Kami akan segera menghubungi Anda.
+                     </p>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+
+
+   <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+   <footer>
+      <div class="container">
+         <div class="row g-5">
+
+            <!-- Tentang Warban -->
+            <div class="col-lg-4">
+               <div class="fnm">
+                  War<span>ban</span>
+               </div>
+               <p class="fdesc">
+                  Warban adalah warung masakan khas Banjar yang menyajikan
+                  hidangan tradisional dengan cita rasa autentik, bahan
+                  berkualitas, dan suasana yang nyaman.
+               </p>
+               <div class="fsoc">
+                  <a href="#" aria-label="Facebook">
+                     <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" aria-label="Instagram">
+                     <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="#" aria-label="TikTok">
+                     <i class="fab fa-tiktok"></i>
+                  </a>
+                  <a href="#" aria-label="YouTube">
+                     <i class="fab fa-youtube"></i>
+                  </a>
+               </div>
+            </div>
+
+            <!-- Tautan cepat -->
+            <div class="col-sm-6 col-lg-2">
+               <div class="ftit">
+                  Tautan Cepat
+               </div>
+               <ul class="flinks ps-0">
+                  <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#chefs">Juru Masak</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#testimonials">Ulasan</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#reservation">Reservasi</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#contact-section">Kontak</a></li>
+               </ul>
+            </div>
+
+            <!-- Menu kami -->
+            <div class="col-sm-6 col-lg-2">
+               <div class="ftit">
+                  Menu Kami
+               </div>
+               <ul class="flinks ps-0">
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Soto Banjar
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Ikan Patin Baubar
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Nasi Kuning Banjar
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Ayam Masak Habang
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Iwak Karing Betanak
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#menu">
+                        <i class="fas fa-chevron-right"></i>
+                        Bingka
+                     </a>
+                  </li>
+               </ul>
+            </div>
+
+            <!-- Informasi kontak -->
+            <div class="col-lg-4">
+               <div class="ftit">
+                  Hubungi Kami
+               </div>
+
+               <!-- Alamat -->
+               <div class="fci">
+                  <div class="fciico">
+                     <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <div class="fciinfo">
+                     <strong>
+                        Alamat
+                     </strong>
+                     Kayu Tangi II,
+                     Banjarmasin,
+                     Kalimantan Selatan
+                  </div>
+               </div>
+
+               <!-- Telepon -->
+               <div class="fci">
+                  <div class="fciico">
+                     <i class="fas fa-phone-alt"></i>
+                  </div>
+                  <div class="fciinfo">
+                     <strong>
+                        Telepon
+                     </strong>
+                     +62 808-5410-098
+                  </div>
+               </div>
+
+               <!-- Email -->
+               <div class="fci">
+                  <div class="fciico">
+                     <i class="fas fa-envelope"></i>
+                  </div>
+                  <div class="fciinfo">
+                     <strong>
+                        Email
+                     </strong>
+                     warban@gmail.com
+                  </div>
+               </div>
+
+               <!-- Jam operasional -->
+               <div class="fci">
+                  <div class="fciico">
+                     <i class="fas fa-clock"></i>
+                  </div>
+                  <div class="fciinfo">
+                     <strong>
+                        Jam Operasional
+                     </strong>
+                     Senin - Minggu,
+                     09.00 - 22.00 WIB
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+
+      <!-- Hak cipta -->
+      <div class="fbot">
+         <div class="container">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+               <p>
+                  &copy; 2026
+                  <span>Warban</span>.
+                  Hak cipta dilindungi.
+                  Dibuat dengan
+                  <span>
+                     <i class="fas fa-heart"></i>
+                  </span>
+                  untuk pecinta masakan Banjar.
+               </p>
+
+               <div>
+                  <a href="#">
+                     Kebijakan Privasi
+                  </a>
+                  <a href="#">
+                     Syarat &amp; Ketentuan
+                  </a>
+                  <a href="#">
+                     Kebijakan Cookie
+                  </a>
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </footer>
+
+
+   <!-- ============================================================
+       ELEMEN MENGAMBANG
+       ============================================================ -->
+   <!-- Keranjang mengambang -->
+   <!-- <div class="cartfl"><i class="fas fa-shopping-cart"></i><span>My Cart</span><div class="ccount" id="cartCount">0</div></div> -->
+
+   <!-- Tombol kembali ke atas -->
+   <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+
+   <!-- ============================================================
+       JAVASCRIPT: PUSTAKA
+       ============================================================ -->
+   <!-- jQuery -->
+   <script src="js/jquery-3.7.1.min.js"></script>
+   <!-- Bootstrap 5 -->
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <!-- Animasi AOS -->
+   <script src="js/aos.js"></script>
+   <!-- Swiper -->
+   <script src="js/swiper-bundle.min.js"></script>
+   <!-- Magnific Popup -->
+   <script src="js/jquery.magnific-popup.min.js"></script>
+
+
+   <!-- ============================================================
+       JAVASCRIPT: FALLBACK INTERAKSI TOMBOL HERO (smooth scroll)
+       ============================================================ -->
+   <script>
+      document.addEventListener('DOMContentLoaded', function () {
+         document.querySelectorAll('#hero a[href^="#"]').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+               const target = document.querySelector(this.getAttribute('href'));
+               if (target) {
+                  e.preventDefault();
+                  target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+               }
+            });
+         });
+      });
+   </script>
+
+
+   <!-- ============================================================
+       JAVASCRIPT: UTAMA
+       ============================================================ -->
+   <script src="js/main.js"></script>
+
+</body>
+
+</html>
