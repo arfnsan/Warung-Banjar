@@ -1,0 +1,26 @@
+{
+  "name": "warban-backend",
+  "version": "1.0.0",
+  "description": "Backend API untuk Warban - Warung Masakan Banjar",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/seed.js",
+    "test": "node --test \"test/*.test.js\""
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.11.1",
+    "compression": "^1.8.0",
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.0",
+    "helmet": "^8.1.0",
+    "zod": "^4.0.0"
+  }
+}
