@@ -10,11 +10,11 @@
     "test": "node --test \"test/*.test.js\""
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^12.11.1",
+    "better-sqlite3": "^12.0.0",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
     "dotenv": "^18.0.0",
