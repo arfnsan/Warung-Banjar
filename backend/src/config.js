@@ -12,7 +12,7 @@ module.exports = {
     : path.join(__dirname, '..', 'data', 'warban.db'),
   adminKey: process.env.ADMIN_API_KEY || '',
   corsOrigins: list(process.env.CORS_ORIGINS),
-  whatsapp: (process.env.WHATSAPP_NUMBER || '628085410098').replace(/\D/g, ''),
+  whatsapp: (process.env.WHATSAPP_NUMBER || '628115000957').replace(/\D/g, ''),
   staticDir: process.env.STATIC_DIR
     ? path.resolve(process.cwd(), process.env.STATIC_DIR)
     : path.join(__dirname, '..', '..'),

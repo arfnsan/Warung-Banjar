@@ -8,9 +8,9 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <meta name="author" content="Sarab">
-   <meta name="description" content="Warban - Website Warung Masakan Banjar">
-   <title>Warban - Masakan Banjar</title>
+   <meta name="author" content="Warban">
+   <meta name="description" content="Warban - Website Warung Masakan Khas Banjar Autentik di Banjarmasin">
+   <title>Warban - Masakan Khas Banjar</title>
 
    <!-- Google Fonts -->
    <link
@@ -37,23 +37,23 @@
        ============================================================ -->
    <div id="topbar">
       <div class="container">
-         <div class="d-flex justify-content-between align-menu-center flex-wrap gap-2">
+         <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
 
             <!-- Info kontak singkat -->
             <div class="top-contact d-flex flex-wrap">
-               <span><i class="fas fa-phone-alt"></i>+62 808-5410-098</span>
+               <span><i class="fas fa-phone-alt"></i>+62 811-5000-957</span>
                <span><i class="fas fa-envelope"></i>warban@gmail.com</span>
                <span><i class="fas fa-map-marker-alt"></i>Kayu Tangi II, BJM</span>
             </div>
 
             <!-- Tag promo & ikon sosial media -->
-            <div class="d-flex align-menu-center gap-3">
+            <div class="d-flex align-items-center gap-3">
                <span class="ttag"><i class="fas fa-fire me-1"></i>Gratis Antar, Hari Ini!</span>
                <div class="tsoc">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-tiktok"></i></a>
-                  <a href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="#" aria-label="Facebook Warban"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Instagram Warban"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="TikTok Warban"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" aria-label="YouTube Warban"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
 
@@ -69,7 +69,7 @@
       <div class="container">
 
          <!-- Logo / brand -->
-         <a class="navbar-brand" href="#">
+         <a class="navbar-brand" href="#hero">
             <div class="blogo">
                <div class="bico"><i class="fas fa-utensils"></i></div>
                <div>
@@ -80,14 +80,15 @@
          </a>
 
          <!-- Tombol menu (mobile) -->
-         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu"
+            aria-controls="navmenu" aria-expanded="false" aria-label="Buka navigasi">
             <i class="fas fa-bars" style="color:var(--primary);font-size:1.35rem;"></i>
          </button>
 
          <div class="collapse navbar-collapse" id="navmenu">
 
-            <!-- Daftar tautan menu -->
-            <ul class="navbar-nav mx-auto">
+            <!-- Daftar tautan menu (1 baris) -->
+            <ul class="navbar-nav mx-auto align-items-lg-center">
                <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
                <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
@@ -97,13 +98,39 @@
                <li class="nav-item"><a class="nav-link" href="#contact-section">Kontak</a></li>
             </ul>
 
-            <!-- Tombol pencarian & tombol pesan -->
-            <div class="d-flex align-items-center gap-1">
-               <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
-               <a href="login.html" class="nav-link" id="loginBtn"><i class="fas fa-user me-1" aria-hidden="true"></i>Login</a>
-               <span id="accountName" class="small" hidden></span>
-               <button type="button" class="nav-link border-0 bg-transparent" id="logoutBtn" hidden><i class="fas fa-sign-out-alt me-1" aria-hidden="true"></i>Keluar</button>
-               <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Pesan Sekarang!</a>
+            <!-- Tombol pencarian, profil user & tombol pesan (1 baris) -->
+            <div class="d-flex align-items-center flex-lg-nowrap gap-2 mt-3 mt-lg-0">
+               <button type="button" id="navSearchBtn" title="Cari menu" aria-label="Cari menu">
+                  <i class="fas fa-search"></i>
+               </button>
+
+               <!-- Tampil jika belum login -->
+               <a href="login.html" class="nav-link text-nowrap fw-semibold px-2" id="loginBtn">
+                  <i class="fas fa-user me-1" aria-hidden="true"></i>Login
+               </a>
+
+               <!-- Tampil jika sudah login (Avatar default + Nama + Dropdown Keluar) -->
+               <div class="dropdown" id="accountMenu" hidden>
+                  <button class="user-pill-btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                     aria-expanded="false">
+                     <span class="user-avatar-placeholder">
+                        <i class="fas fa-user" aria-hidden="true"></i>
+                     </span>
+                     <span id="accountName"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 mt-2">
+                     <li>
+                        <button type="button" class="dropdown-item text-danger d-flex align-items-center gap-2"
+                           id="logoutBtn">
+                           <i class="fas fa-sign-out-alt" aria-hidden="true"></i>Keluar
+                        </button>
+                     </li>
+                  </ul>
+               </div>
+
+               <a href="#menu" class="nav-link nav-cta">
+                  <i class="fas fa-shopping-bag me-1"></i>Pesan Sekarang!
+               </a>
             </div>
 
          </div>
@@ -114,16 +141,18 @@
    <!-- ============================================================
        OVERLAY PENCARIAN
        ============================================================ -->
-   <div id="searchOv">
-      <button class="sovclose" id="searchClose"><i class="fas fa-times"></i></button>
+   <div id="searchOv" role="dialog" aria-modal="true" aria-label="Pencarian menu">
+      <button type="button" class="sovclose" id="searchClose" aria-label="Tutup pencarian">
+         <i class="fas fa-times"></i>
+      </button>
 
       <div class="sovbox">
          <h4>Mau makan apa hari ini?</h4>
 
          <!-- Kolom input pencarian -->
          <div class="sovinput">
-            <input type="text" id="searchInput" placeholder="Cari di sini..." autocomplete="off" />
-            <button><i class="fas fa-search"></i></button>
+            <input type="text" id="searchInput" placeholder="Cari masakan Banjar di sini..." autocomplete="off" />
+            <button type="button" aria-label="Cari"><i class="fas fa-search"></i></button>
          </div>
 
          <!-- Kategori di dalam kotak pencarian -->
@@ -149,10 +178,10 @@
    <section id="hero">
       <div class="hs hs1"></div>
       <div class="hs hs2"></div>
-      <div class="hbgtxt">Makanan</div>
+      <div class="hbgtxt">Banjar</div>
 
       <div class="container">
-         <div class="row align-menu-center g-5" style="min-height:88vh;">
+         <div class="row align-items-center g-5" style="min-height:88vh;">
 
             <!-- Kolom kiri: teks, tombol, statistik -->
             <div class="col-lg-6">
@@ -163,11 +192,11 @@
 
                <h1 class="htitle">Masakan <span class="hl">Banjar</span><br />untuk Setiap Saat</h1>
 
-               <p class="hdesc">Pengalaman makanan khas Banjar dengan cita rasa yang autentik.
-                  Kami menyajikan hidangan khas Banjar yang lezat dan berkualitas tinggi.</p>
+               <p class="hdesc">Pengalaman kuliner khas Banjar dengan cita rasa yang autentik.
+                  Kami menyajikan hidangan tradisional Kalimantan Selatan yang lezat dan berkualitas tinggi.</p>
 
                <!-- Tombol aksi: lihat menu & video -->
-               <div class="d-flex flex-wrap gap-3 mb-2">
+               <div class="d-flex flex-wrap align-items-center gap-3 mb-2">
                   <a href="#menu" class="btn-red" role="button" aria-label="Lihat Menu Warban">
                      <i class="fas fa-utensils"></i>Lihat Menu
                   </a>
@@ -180,14 +209,14 @@
                </div>
 
                <!-- Statistik singkat -->
-               <div class="hstats d-flex gap-3 flex-wrap mt-4">
+               <div class="hstats d-flex align-items-center gap-3 flex-wrap mt-4">
                   <div class="hstat"><span class="snum">850<em>+</em></span><small>Pelanggan Puas</small></div>
                   <div class="sdiv"></div>
                   <div class="hstat"><span class="snum">120<em>+</em></span><small>Pilihan Menu</small></div>
                   <div class="sdiv"></div>
-                  <div class="hstat"><span class="snum">15<em>+</em></span><small>Expert Juru Masak</small></div>
+                  <div class="hstat"><span class="snum">15<em>+</em></span><small>Juru Masak Ahli</small></div>
                   <div class="sdiv"></div>
-                  <div class="hstat"><span class="snum">12<em>yr</em></span><small>Pengalaman</small></div>
+                  <div class="hstat"><span class="snum">12<em>th</em></span><small>Pengalaman</small></div>
                </div>
             </div>
 
@@ -195,7 +224,7 @@
             <div class="col-lg-6">
                <div style="position:relative;text-align:center;">
                   <div class="hcircle">
-                     <img src="img/menu/1.jpg" alt="Burger" />
+                     <img src="img/menu/1.jpg" alt="Hidangan Khas Banjar Warban" />
                   </div>
                   <div class="fcard fc1">
                      <div class="fcoi r"><i class="fas fa-fire"></i></div>
@@ -207,7 +236,7 @@
                   </div>
                   <div class="fcard fc3">
                      <div class="fcoi g"><i class="fas fa-clock"></i></div>
-                     <div><span class="fcnum">20 min</span><span class="fcsm">Antar cepat</span></div>
+                     <div><span class="fcnum">20 mnt</span><span class="fcsm">Antar cepat</span></div>
                   </div>
                </div>
             </div>
@@ -222,21 +251,21 @@
        ============================================================ -->
    <div class="mqsec">
       <div class="mqtrack">
-         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Goreng Renyah</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Masak Habang</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Banjar Pilihan</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Masakan Tradisional</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Soto Banjar Autentik</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Lauk Pilihan</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Minuman Segar</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Sajian Panggang</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Kue Khas Banjar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Ikan Patin Baubar</div>
          <!-- Duplikat untuk efek berjalan tanpa putus -->
-         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Goreng Renyah</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Ayam Masak Habang</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Banjar Pilihan</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Masakan Tradisional</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Hidangan Segar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Soto Banjar Autentik</div>
          <div class="mqitem"><i class="fas fa-circle"></i>Lauk Pilihan</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Minuman Segar</div>
-         <div class="mqitem"><i class="fas fa-circle"></i>Sajian Panggang</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Kue Khas Banjar</div>
+         <div class="mqitem"><i class="fas fa-circle"></i>Ikan Patin Baubar</div>
       </div>
    </div>
 
@@ -250,10 +279,10 @@
          <!-- Judul section -->
          <div class="text-center mb-5" data-aos="fade-up">
             <span class="slbl">Yang Kami Sajikan</span>
-            <h2 class="stitle">Cari berdasarkan <span>Menu</span></h2>
+            <h2 class="stitle">Cari berdasarkan <span>Kategori</span></h2>
             <div class="sline"></div>
-            <p class="sdesc mx-auto" style="max-width:480px;">Pilih masakan khas Banjar dari daftar menu yang tersedia.
-            </p>
+            <p class="sdesc mx-auto" style="max-width:480px;">Pilih kategori masakan khas Banjar dari daftar menu yang
+               tersedia.</p>
          </div>
 
          <!-- Kartu kategori -->
@@ -311,14 +340,14 @@
        ============================================================ -->
    <section id="about">
       <div class="container">
-         <div class="row align-menu-center g-5">
+         <div class="row align-items-center g-5">
 
             <!-- Kolom kiri: tumpukan gambar -->
             <div class="col-lg-5" data-aos="fade-right">
                <div class="astack">
                   <div class="aexp"><span class="anum">12+</span><small>Tahun<br />Berdiri</small></div>
-                  <div class="amain"><img src="img/about1.jpg" alt="Restaurant" /></div>
-                  <div class="asm"><img src="img/about2.jpg" alt="" /></div>
+                  <div class="amain"><img src="img/about1.jpg" alt="Suasana Warung Masakan Banjar" /></div>
+                  <div class="asm"><img src="img/about2.jpg" alt="Sajian Khas Banjar" /></div>
                </div>
             </div>
 
@@ -380,22 +409,25 @@
          </div>
 
          <!-- Tombol filter menu -->
-         <div class="text-center mb-4" data-aos="fade-up">
-            <button class="filtbtn active" data-f="all">Semua</button>
-            <button class="filtbtn" data-f="utama">Masakan Utama</button>
-            <button class="filtbtn" data-f="ikan">Hidangan Ikan</button>
-            <button class="filtbtn" data-f="nasi">Nasi &amp; Lauk</button>
-            <button class="filtbtn" data-f="kuah">Hidangan Berkuah</button>
-            <button class="filtbtn" data-f="kue">Kue Tradisional</button>
+         <div class="d-flex justify-content-center flex-wrap gap-2 mb-4" data-aos="fade-up">
+            <button type="button" class="filtbtn active" data-f="all">Semua</button>
+            <button type="button" class="filtbtn" data-f="utama">Masakan Utama</button>
+            <button type="button" class="filtbtn" data-f="ikan">Hidangan Ikan</button>
+            <button type="button" class="filtbtn" data-f="nasi">Nasi &amp; Lauk</button>
+            <button type="button" class="filtbtn" data-f="kuah">Hidangan Berkuah</button>
+            <button type="button" class="filtbtn" data-f="kue">Kue Tradisional</button>
          </div>
 
          <!-- Grid kartu menu -->
          <div class="row g-4" id="mgrid" aria-live="polite">
-            <p role="status">Memuat menu...</p>
+            <p class="text-center text-muted" role="status">Memuat menu...</p>
          </div>
          <!-- Akhir #mgrid -->
 
-         <div class="text-center mt-5"><a href="#" class="btn-red"><i class="fas fa-th-large"></i>Lihat Semua Menu</a>
+         <div class="text-center mt-5">
+            <button type="button" class="btn-red" onclick="document.querySelector('.filtbtn[data-f=\'all\']')?.click()">
+               <i class="fas fa-th-large"></i>Tampilkan Semua Menu
+            </button>
          </div>
 
       </div>
@@ -405,12 +437,14 @@
    <!-- ============================================================
        POPUP DETAIL MENU
        ============================================================ -->
-   <div id="menuPop">
+   <div id="menuPop" role="dialog" aria-modal="true" aria-labelledby="mpTitle">
       <div class="mpbox">
-         <button class="mpclose" id="mpClose"><i class="fas fa-times"></i></button>
+         <button type="button" class="mpclose" id="mpClose" aria-label="Tutup detail menu">
+            <i class="fas fa-times"></i>
+         </button>
 
          <!-- Gambar menu -->
-         <div class="mpimg"><img id="mpImg" src="" alt="" /></div>
+         <div class="mpimg"><img id="mpImg" src="" alt="Foto Menu" /></div>
 
          <!-- Isi detail menu (diisi oleh JavaScript) -->
          <div class="mpbody">
@@ -423,14 +457,16 @@
 
             <!-- Pengatur jumlah porsi -->
             <div class="mpqty">
-               <button class="mpqbtn" id="mpMinus">-</button>
+               <button type="button" class="mpqbtn" id="mpMinus" aria-label="Kurangi porsi">-</button>
                <span class="mpqnum" id="mpQnum">1</span>
-               <button class="mpqbtn" id="mpPlus">+</button>
+               <button type="button" class="mpqbtn" id="mpPlus" aria-label="Tambah porsi">+</button>
                <span style="font-size:.82rem;color:#aaa;margin-left:9px;">porsi</span>
             </div>
 
             <div class="mptags" id="mpTags"></div>
-            <button class="mpaddcart" id="mpAddCart"><i class="fas fa-shopping-cart"></i>Tambah Pesanan</button>
+            <button type="button" class="mpaddcart" id="mpAddCart">
+               <i class="fas fa-shopping-cart"></i>Tambah Pesanan
+            </button>
          </div>
       </div>
    </div>
@@ -442,14 +478,14 @@
    <section id="special">
       <div class="spbg"></div>
       <div class="container" style="position:relative;z-index:2;">
-         <div class="row align-menu-center g-5">
+         <div class="row align-items-center g-5">
 
             <!-- Kolom kiri: teks promo & hitung mundur -->
             <div class="col-lg-6" data-aos="fade-right">
                <div class="sptag"><i class="fas fa-bolt me-1"></i>Promo Terbatas</div>
                <h2 class="sptitle">Diskon 30%<br />Hidangan Khas<br /><span>Banjar</span></h2>
-               <p class="spdesc">Jangan lewatkan kesempatan ini! Diskon 30% untuk hidangan khas Banjar. Jangan lewatkan
-                  kesempatan ini!</p>
+               <p class="spdesc">Jangan lewatkan penawaran spesial hari ini! Nikmati potongan harga 30% untuk hidangan
+                  pilihan khas Banjar sebelum waktu promo berakhir.</p>
 
                <!-- Hitung mundur -->
                <div class="cdwrap">
@@ -466,7 +502,7 @@
                <div class="spimgw">
                   <div class="spglow"></div>
                   <div class="sppbdg"><span class="old">Rp30.000</span><span class="np">Rp25.000</span></div>
-                  <img src="img/off-img.jpg" alt="Special Burger" />
+                  <img src="img/off-img.jpg" alt="Promo Hidangan Spesial Banjar" />
                </div>
             </div>
 
@@ -524,10 +560,12 @@
    <!-- ============================================================
        POPUP GALERI
        ============================================================ -->
-   <div id="galPop">
+   <div id="galPop" role="dialog" aria-modal="true" aria-labelledby="gpTitle">
       <div class="gpbox">
-         <button class="gpclose" id="gpClose"><i class="fas fa-times"></i></button>
-         <img id="gpImg" src="" alt="" />
+         <button type="button" class="gpclose" id="gpClose" aria-label="Tutup galeri">
+            <i class="fas fa-times"></i>
+         </button>
+         <img id="gpImg" src="" alt="Preview Galeri" />
 
          <!-- Keterangan gambar -->
          <div class="gpcap">
@@ -537,8 +575,8 @@
 
          <!-- Tombol sebelumnya / berikutnya -->
          <div class="gpnav">
-            <button id="gpPrev"><i class="fas fa-chevron-left me-1"></i>Prev</button>
-            <button id="gpNext">Next <i class="fas fa-chevron-right ms-1"></i></button>
+            <button type="button" id="gpPrev"><i class="fas fa-chevron-left me-1"></i>Sebelumnya</button>
+            <button type="button" id="gpNext">Berikutnya <i class="fas fa-chevron-right ms-1"></i></button>
          </div>
       </div>
    </div>
@@ -619,7 +657,7 @@
                   <div class="tlyear">2026</div>
                   <h5>Warban Saat Ini</h5>
                   <p>Warban saat ini sedang berkembang pesat dan menawarkan berbagai kuliner Banjar yang autentik dan
-                     lezat di beberapa kota di Banjarmasin.</p>
+                     lezat di beberapa sudut Kota Banjarmasin.</p>
                </div>
                <div class="tl-center">
                   <div class="tldot"></div>
@@ -628,7 +666,7 @@
                   <div class="tlyear">2026</div>
                   <h5>Warban Saat Ini</h5>
                   <p>Warban saat ini sedang berkembang pesat dan menawarkan berbagai kuliner Banjar yang autentik dan
-                     lezat di beberapa kota di Banjarmasin.</p>
+                     lezat di beberapa sudut Kota Banjarmasin.</p>
                </div>
             </div>
 
@@ -657,9 +695,12 @@
             <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
                <div class="chcard">
                   <div class="chimg">
-                     <img src="img/chefs/cewe.jpg" alt="" />
-                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
-                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                     <img src="img/chefs/cewe.jpg" alt="Aisyah Banjar" />
+                     <div class="chsoc">
+                        <a href="#" aria-label="Instagram Aisyah"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook Aisyah"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter Aisyah"><i class="fab fa-twitter"></i></a>
+                     </div>
                   </div>
                   <div class="chbody">
                      <div class="chnm">Aisyah Banjar</div>
@@ -673,9 +714,12 @@
             <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="80">
                <div class="chcard">
                   <div class="chimg">
-                     <img src="img/chefs/cowo.jpg" alt="" />
-                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
-                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                     <img src="img/chefs/cowo.jpg" alt="M. Fajar" />
+                     <div class="chsoc">
+                        <a href="#" aria-label="Instagram M. Fajar"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook M. Fajar"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter M. Fajar"><i class="fab fa-twitter"></i></a>
+                     </div>
                   </div>
                   <div class="chbody">
                      <div class="chnm">M. Fajar</div>
@@ -689,9 +733,12 @@
             <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="160">
                <div class="chcard">
                   <div class="chimg">
-                     <img src="img/chefs/cewe.jpg" alt="" />
-                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
-                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                     <img src="img/chefs/cewe.jpg" alt="Siti Rahmah" />
+                     <div class="chsoc">
+                        <a href="#" aria-label="Instagram Siti Rahmah"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook Siti Rahmah"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter Siti Rahmah"><i class="fab fa-twitter"></i></a>
+                     </div>
                   </div>
                   <div class="chbody">
                      <div class="chnm">Siti Rahmah</div>
@@ -705,13 +752,16 @@
             <div class="col-sm-6 col-lg-3" data-aos="fade-up" data-aos-delay="240">
                <div class="chcard">
                   <div class="chimg">
-                     <img src="img/chefs/cowo.jpg" alt="" />
-                     <div class="chsoc"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i
-                              class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div>
+                     <img src="img/chefs/cowo.jpg" alt="Rizky Maulana" />
+                     <div class="chsoc">
+                        <a href="#" aria-label="Instagram Rizky Maulana"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook Rizky Maulana"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter Rizky Maulana"><i class="fab fa-twitter"></i></a>
+                     </div>
                   </div>
                   <div class="chbody">
                      <div class="chnm">Rizky Maulana</div>
-                     <div class="chrole">Hidangan Ikan Artisan</div>
+                     <div class="chrole">Spesialis Hidangan Ikan</div>
                      <div class="chexp">9 tahun pengalaman</div>
                   </div>
                </div>
@@ -731,55 +781,55 @@
 
          <!-- Judul section -->
          <div class="text-center mb-5" data-aos="fade-up">
-            <span class="slbl" style="color:#a5d6bc;">Opening Jam</span>
+            <span class="slbl" style="color:#a5d6bc;">Jam Operasional</span>
             <h2 class="stitle" style="color:#fff;">Kami <span style="color:var(--secondary);">Buka untuk Anda</span>
             </h2>
             <div class="sline"></div>
          </div>
 
-         <div class="row g-4 align-menu-start">
+         <div class="row g-4 align-items-stretch">
 
             <!-- Kolom 1: jadwal buka -->
             <div class="col-lg-5" data-aos="fade-right">
-               <div class="hrscard">
-                  <div class="hrsrow">
-                     <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Sabtu
-                        - Minggu</span>
-                     <div class="d-flex align-menu-center gap-2">
-                        <div class="hdot off"></div>
-                        <span class="hrstime" style="color:#ff6b6b;">Tutup</span>
-                     </div>
-                  </div>
+               <div class="hrscard h-100">
                   <div class="hrsrow">
                      <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Senin
                         - Selasa</span>
-                     <div class="d-flex align-menu-center gap-2">
+                     <div class="d-flex align-items-center gap-2">
                         <div class="hdot on"></div>
-                        <span class="hrstime">09:00 AM - 10:00 PM</span>
+                        <span class="hrstime">09.00 - 22.00 WITA</span>
                      </div>
                   </div>
                   <div class="hrsrow">
                      <span class="hrsday"><i class="fas fa-calendar-day me-2"
                            style="color:var(--secondary);"></i>Rabu</span>
-                     <div class="d-flex align-menu-center gap-2">
+                     <div class="d-flex align-items-center gap-2">
                         <div class="hdot on"></div>
-                        <span class="hrstime">09:00 AM - 11:00 PM</span>
+                        <span class="hrstime">09.00 - 23.00 WITA</span>
                      </div>
                   </div>
                   <div class="hrsrow">
                      <span class="hrsday"><i class="fas fa-calendar-day me-2"
                            style="color:var(--secondary);"></i>Kamis</span>
-                     <div class="d-flex align-menu-center gap-2">
+                     <div class="d-flex align-items-center gap-2">
                         <div class="hdot on"></div>
-                        <span class="hrstime">10:00 AM - 11:30 PM</span>
+                        <span class="hrstime">10.00 - 23.30 WITA</span>
                      </div>
                   </div>
                   <div class="hrsrow">
                      <span class="hrsday"><i class="fas fa-calendar-day me-2"
                            style="color:var(--secondary);"></i>Jumat</span>
-                     <div class="d-flex align-menu-center gap-2">
+                     <div class="d-flex align-items-center gap-2">
                         <div class="hdot on"></div>
-                        <span class="hrstime">11:00 AM - 09:00 PM</span>
+                        <span class="hrstime">11.00 - 21.00 WITA</span>
+                     </div>
+                  </div>
+                  <div class="hrsrow">
+                     <span class="hrsday"><i class="fas fa-calendar-day me-2" style="color:var(--secondary);"></i>Sabtu
+                        - Minggu</span>
+                     <div class="d-flex align-items-center gap-2">
+                        <div class="hdot off"></div>
+                        <span class="hrstime" style="color:#ff6b6b;">Tutup</span>
                      </div>
                   </div>
                </div>
@@ -787,7 +837,7 @@
 
             <!-- Kolom 2: ajakan pesan daring -->
             <div class="col-lg-3" data-aos="zoom-in">
-               <div class="hrscta">
+               <div class="hrscta h-100 d-flex flex-column justify-content-center align-items-center">
                   <i class="fas fa-truck-fast fa-2x mb-3" style="color:rgba(255,255,255,.8);"></i>
                   <h4>Pesan Daring</h4>
                   <p>Hidangan hangat diantar dalam 25 menit</p>
@@ -797,7 +847,7 @@
 
             <!-- Kolom 3: alamat & kontak -->
             <div class="col-lg-4" data-aos="fade-left">
-               <div class="hrscard">
+               <div class="hrscard h-100">
                   <h5
                      style="color:#fff;margin-bottom:18px;font-family:'Poppins',sans-serif;font-size:.95rem;font-weight:700;">
                      <i class="fas fa-map-marker-alt me-2" style="color:var(--secondary);"></i>Temukan Kami
@@ -807,7 +857,7 @@
                         style="font-size:.8rem;">Kayu Tangi II, Banjarmasin</span></div>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-phone me-2"
                            style="color:var(--secondary);"></i>Telepon</span><span class="hrstime"
-                        style="font-size:.8rem;">+62 808-5410-098</span></div>
+                        style="font-size:.8rem;">+62 811-5000-957</span></div>
                   <div class="hrsrow"><span class="hrsday"><i class="fas fa-envelope me-2"
                            style="color:var(--secondary);"></i>Surel</span><span class="hrstime"
                         style="font-size:.8rem;">warban@gmail.com</span></div>
@@ -841,10 +891,10 @@
                      <div class="tesq">"</div>
                      <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Sejujurnya, warban memiliki menu yang sangat lengkap dan harganya sangat
-                        terjangkau</p>
+                     <p class="testxt">Sejujurnya, Warban memiliki menu yang sangat lengkap dan harganya sangat
+                        terjangkau.</p>
                      <div class="tesauth">
-                        <img src="img/testimonial/1.jpg" alt="" />
+                        <img src="img/testimonial/1.jpg" alt="Maya" />
                         <div>
                            <div class="tesnm">Maya</div>
                            <div class="tesrl">Pelanggan Setia</div>
@@ -859,10 +909,10 @@
                      <div class="tesq">"</div>
                      <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Pesanan delivery tiba dengan panas dan segar dalam 22 menit. Porsi yang diberikan
-                        sangat besar. Warban telah menjadi tempat makan favorit saya tanpa diragukan.</p>
+                     <p class="testxt">Pesanan delivery tiba dalam keadaan panas dan segar dalam 22 menit. Porsinya
+                        sangat memuaskan. Warban sudah menjadi tempat makan favorit saya.</p>
                      <div class="tesauth">
-                        <img src="img/testimonial/2.jpg" alt="" />
+                        <img src="img/testimonial/2.jpg" alt="Rian" />
                         <div>
                            <div class="tesnm">Rian</div>
                            <div class="tesrl">Pecinta Kuliner</div>
@@ -877,9 +927,10 @@
                      <div class="tesq">"</div>
                      <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Harga yang terjangkau dan menu yang lengkap. Makanan yang segar dan nikmat</p>
+                     <p class="testxt">Harga yang terjangkau dan menu yang lengkap. Makanannya selalu segar dan nikmat.
+                     </p>
                      <div class="tesauth">
-                        <img src="img/testimonial/3.jpg" alt="" />
+                        <img src="img/testimonial/3.jpg" alt="Nadia" />
                         <div>
                            <div class="tesnm">Nadia</div>
                            <div class="tesrl">Penikmat Kuliner</div>
@@ -894,9 +945,9 @@
                      <div class="tesq">"</div>
                      <div class="tess"><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                            class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                     <p class="testxt">Soto warban sangat nikmat dan segar</p>
+                     <p class="testxt">Soto Banjar di Warban sangat nikmat, kuahnya gurih dan rempahnya terasa pas.</p>
                      <div class="tesauth">
-                        <img src="img/testimonial/4.jpg" alt="" />
+                        <img src="img/testimonial/4.jpg" alt="Dimas" />
                         <div>
                            <div class="tesnm">Dimas</div>
                            <div class="tesrl">Pelanggan Acara</div>
@@ -930,63 +981,70 @@
                bersama keluarga dan teman. Kami menyarankan melakukan reservasi terlebih dahulu.</p>
          </div>
 
-         <div class="row g-4 align-menu-start">
+         <div class="row g-4 align-items-start">
 
             <!-- Kolom kiri: info kontak reservasi -->
             <div class="col-lg-4" data-aos="fade-right">
                <div style="background:var(--dark);border-radius:18px;padding:36px;">
-                  <h4 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Kontak Info</h4>
+                  <h4 style="color:#fff;font-size:1.3rem;margin-bottom:8px;">Info Reservasi</h4>
                   <p style="color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:26px;">Kami siap membantu Anda
                      merencanakan waktu makan yang menyenangkan.</p>
 
                   <div class="d-flex flex-column gap-3">
 
                      <!-- Jam buka -->
-                     <div class="d-flex align-menu-center gap-3">
+                     <div class="d-flex align-items-center gap-3">
                         <div
-                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
                            <i class="fas fa-clock"></i>
                         </div>
-                        <div><strong
+                        <div>
+                           <strong
                               style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Jam
-                              Buka</strong><span style="color:#fff;font-size:.87rem;">Senin - Minggu, 09.00 -
-                              22.00</span>
+                              Buka</strong>
+                           <span style="color:#fff;font-size:.87rem;">Senin - Jumat, 09.00 - 22.00 WITA</span>
                         </div>
                      </div>
 
                      <!-- Telepon -->
-                     <div class="d-flex align-menu-center gap-3">
+                     <div class="d-flex align-items-center gap-3">
                         <div
-                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
                            <i class="fas fa-phone-alt"></i>
                         </div>
-                        <div><strong
+                        <div>
+                           <strong
                               style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Pesan
-                              Tempat</strong><span style="color:#fff;font-size:.87rem;">+62 808-5410-098</span>
+                              Tempat</strong>
+                           <span style="color:#fff;font-size:.87rem;">+62 811-5000-957</span>
                         </div>
                      </div>
 
                      <!-- Makan bersama -->
-                     <div class="d-flex align-menu-center gap-3">
+                     <div class="d-flex align-items-center gap-3">
                         <div
-                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
                            <i class="fas fa-users"></i>
                         </div>
-                        <div><strong
+                        <div>
+                           <strong
                               style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Makan
-                              Bersama</strong><span style="color:#fff;font-size:.87rem;">Menu khusus untuk 10+
-                              guests</span></div>
+                              Bersama</strong>
+                           <span style="color:#fff;font-size:.87rem;">Menu khusus untuk 10+ tamu</span>
+                        </div>
                      </div>
 
                      <!-- Lokasi -->
-                     <div class="d-flex align-menu-center gap-3">
+                     <div class="d-flex align-items-center gap-3">
                         <div
-                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-menu:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
+                           style="width:46px;height:46px;border-radius:11px;background:rgba(232,40,26,.2);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.1rem;flex-shrink:0;">
                            <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <div><strong
-                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Lokasi</strong><span
-                              style="color:#fff;font-size:.87rem;">Kayu Tangi II, Banjarmasin</span></div>
+                        <div>
+                           <strong
+                              style="display:block;color:#ccc;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;">Lokasi</strong>
+                           <span style="color:#fff;font-size:.87rem;">Kayu Tangi II, Banjarmasin</span>
+                        </div>
                      </div>
 
                   </div>
@@ -1012,7 +1070,7 @@
 
                         <div class="col-sm-6">
                            <label class="flbl" for="resEmail">Alamat Email</label>
-                           <input id="resEmail" type="email" class="fctrl" placeholder="you@email.com" />
+                           <input id="resEmail" type="email" class="fctrl" placeholder="nama@email.com" />
                         </div>
 
                         <div class="col-sm-6">
@@ -1056,7 +1114,7 @@
 
                         <div class="col-12">
                            <button type="submit" class="btn-red w-100 justify-content-center" id="resBtn">
-                              <i class="fas fa-calendar-check"></i> Reservasi
+                              <i class="fas fa-calendar-check"></i> Reservasi Sekarang
                            </button>
                         </div>
                      </div>
@@ -1069,10 +1127,8 @@
                </div>
             </div>
 
-
          </div>
       </div>
-      <br />
    </section>
 
 
@@ -1086,13 +1142,16 @@
             <span class="slbl" style="color:rgba(255,255,255,.7);">Tetap Terhubung</span>
             <h2 class="mb-3" style="color:#fff;">Berlangganan &amp; Dapatkan <span
                   style="color:var(--secondary);">Promo</span></h2>
-            <p class="mb-4" style="color:rgba(255,255,255,.78);">Dapatkan informasi terbaru seputar Warban</p>
+            <p class="mb-4" style="color:rgba(255,255,255,.78);">Dapatkan informasi menu baru dan promo terbaru seputar
+               Warban</p>
 
             <!-- Form email langganan -->
-            <div class="nl-form-wrap">
-               <input class="nlinput" type="email" id="nlSurel" placeholder="Masukkan alamat surel Anda..." />
-               <button class="nlbtn" id="nlBtn"><i class="fas fa-paper-plane me-1"></i>Berlangganan</button>
-            </div>
+            <form class="nl-form-wrap" id="nlForm"
+               onsubmit="event.preventDefault(); document.getElementById('nlBtn')?.click();">
+               <input class="nlinput" type="email" id="nlSurel" placeholder="Masukkan alamat surel Anda..." required />
+               <button type="button" class="nlbtn" id="nlBtn"><i
+                     class="fas fa-paper-plane me-1"></i>Berlangganan</button>
+            </form>
 
             <p style="color:rgba(255,255,255,.45);font-size:.76rem;margin-top:11px;"><i
                   class="fas fa-lock me-1"></i>Tanpa spam, Anda dapat berhenti berlangganan kapan saja.</p>
@@ -1110,20 +1169,15 @@
          <!-- Judul section -->
          <div class="text-center mb-5" data-aos="fade-up">
             <span class="slbl">Hubungi Kami</span>
-
-            <h2 class="stitle">
-               Kontak <span>Kami</span>
-            </h2>
-
+            <h2 class="stitle">Kontak <span>Kami</span></h2>
             <div class="sline"></div>
-
             <p class="sdesc mx-auto" style="max-width:520px;">
                Punya pertanyaan, saran, atau ingin mengadakan acara bersama Warban?
                Kami siap membantu dan mendengar kebutuhan Anda.
             </p>
          </div>
 
-         <div class="row g-4">
+         <div class="row g-4 align-items-start">
 
             <!-- Informasi kontak -->
             <div class="col-lg-4" data-aos="fade-right">
@@ -1141,13 +1195,9 @@
                      <div class="cticon">
                         <i class="fas fa-map-marker-alt"></i>
                      </div>
-
                      <div class="ctinfo">
                         <strong>Alamat</strong>
-                        <span>
-                           Kayu Tangi II,<br>
-                           Banjarmasin, Kalimantan Selatan
-                        </span>
+                        <span>Kayu Tangi II,<br>Banjarmasin, Kalimantan Selatan</span>
                      </div>
                   </div>
 
@@ -1156,12 +1206,9 @@
                      <div class="cticon">
                         <i class="fas fa-phone-alt"></i>
                      </div>
-
                      <div class="ctinfo">
                         <strong>Telepon</strong>
-                        <span>
-                           +62 808-5410-098
-                        </span>
+                        <span>+62 811-5000-957</span>
                      </div>
                   </div>
 
@@ -1170,12 +1217,9 @@
                      <div class="cticon">
                         <i class="fas fa-envelope"></i>
                      </div>
-
                      <div class="ctinfo">
                         <strong>Email</strong>
-                        <span>
-                           warban@gmail.com
-                        </span>
+                        <span>warban@gmail.com</span>
                      </div>
                   </div>
 
@@ -1184,30 +1228,18 @@
                      <div class="cticon">
                         <i class="fas fa-clock"></i>
                      </div>
-
                      <div class="ctinfo">
                         <strong>Jam Operasional</strong>
-                        <span>
-                           Senin - Minggu<br>
-                           09.00 - 22.00 WIB
-                        </span>
+                        <span>Senin - Jumat<br>09.00 - 22.00 WITA</span>
                      </div>
                   </div>
 
                   <!-- Sosial media -->
                   <div class="ctsocrow">
-                     <a href="#" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                     </a>
-                     <a href="#" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                     </a>
-                     <a href="#" aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                     </a>
-                     <a href="#" aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                     </a>
+                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                     <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                   </div>
 
                </div>
@@ -1216,88 +1248,63 @@
             <!-- Form kontak -->
             <div class="col-lg-8" data-aos="fade-left">
                <div class="fcard">
-                  <div class="row g-3">
+                  <form id="contactForm" onsubmit="event.preventDefault(); document.getElementById('ctcBtn')?.click();">
+                     <div class="row g-3">
 
-                     <!-- Nama -->
-                     <div class="col-sm-6">
-                        <label class="flbl">
-                           Nama Anda *
-                        </label>
-                        <input type="text" class="fctrl" placeholder="Masukkan nama lengkap" required>
+                        <!-- Nama -->
+                        <div class="col-sm-6">
+                           <label class="flbl" for="ctcName">Nama Anda *</label>
+                           <input id="ctcName" type="text" class="fctrl" placeholder="Masukkan nama lengkap" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-sm-6">
+                           <label class="flbl" for="ctcEmail">Alamat Email *</label>
+                           <input id="ctcEmail" type="email" class="fctrl" placeholder="nama@email.com" required>
+                        </div>
+
+                        <!-- Telepon -->
+                        <div class="col-sm-6">
+                           <label class="flbl" for="ctcPhone">Nomor Telepon</label>
+                           <input id="ctcPhone" type="tel" class="fctrl" placeholder="+62 8xx-xxxx-xxxx">
+                        </div>
+
+                        <!-- Keperluan -->
+                        <div class="col-sm-6">
+                           <label class="flbl" for="ctcTopic">Keperluan *</label>
+                           <select id="ctcTopic" class="fctrl" required>
+                              <option value="">Pilih keperluan</option>
+                              <option value="umum">Pertanyaan Umum</option>
+                              <option value="reservasi">Reservasi</option>
+                              <option value="katering">Katering &amp; Acara</option>
+                              <option value="menu">Informasi Menu</option>
+                              <option value="saran">Saran &amp; Masukan</option>
+                              <option value="kerjasama">Kerja Sama</option>
+                           </select>
+                        </div>
+
+                        <!-- Pesan -->
+                        <div class="col-12">
+                           <label class="flbl" for="ctcMsg">Pesan *</label>
+                           <textarea id="ctcMsg" class="fctrl" rows="5" placeholder="Tuliskan pesan Anda di sini..."
+                              required></textarea>
+                        </div>
+
+                        <!-- Tombol kirim -->
+                        <div class="col-12">
+                           <button type="submit" class="btn-red" id="ctcBtn">
+                              <i class="fas fa-paper-plane"></i>
+                              Kirim Pesan
+                           </button>
+                        </div>
+
                      </div>
-
-                     <!-- Email -->
-                     <div class="col-sm-6">
-                        <label class="flbl">
-                           Alamat Email *
-                        </label>
-                        <input type="email" class="fctrl" placeholder="nama@email.com" required>
-                     </div>
-
-                     <!-- Telepon -->
-                     <div class="col-sm-6">
-                        <label class="flbl">
-                           Nomor Telepon
-                        </label>
-                        <input type="tel" class="fctrl" placeholder="+62 8xx-xxxx-xxxx">
-                     </div>
-
-                     <!-- Keperluan -->
-                     <div class="col-sm-6">
-                        <label class="flbl">
-                           Keperluan *
-                        </label>
-                        <select class="fctrl" required>
-                           <option value="">
-                              Pilih keperluan
-                           </option>
-                           <option value="umum">
-                              Pertanyaan Umum
-                           </option>
-                           <option value="reservasi">
-                              Reservasi
-                           </option>
-                           <option value="katering">
-                              Katering &amp; Acara
-                           </option>
-                           <option value="menu">
-                              Informasi Menu
-                           </option>
-                           <option value="saran">
-                              Saran &amp; Masukan
-                           </option>
-                           <option value="kerjasama">
-                              Kerja Sama
-                           </option>
-                        </select>
-                     </div>
-
-                     <!-- Pesan -->
-                     <div class="col-12">
-                        <label class="flbl">
-                           Pesan *
-                        </label>
-                        <textarea class="fctrl" rows="5" placeholder="Tuliskan pesan Anda di sini..."
-                           required></textarea>
-                     </div>
-
-                     <!-- Tombol kirim -->
-                     <div class="col-12">
-                        <button type="button" class="btn-red" id="ctcBtn">
-                           <i class="fas fa-paper-plane"></i>
-                           Kirim Pesan
-                        </button>
-                     </div>
-
-                  </div>
+                  </form>
 
                   <!-- Pesan sukses -->
                   <div class="sucmsg" id="ctcOk">
                      <i class="fas fa-check-circle"></i>
-                     <p>
-                        Pesan berhasil dikirim!
-                        Kami akan segera menghubungi Anda.
-                     </p>
+                     <p>Pesan berhasil dikirim! Kami akan segera menghubungi Anda.</p>
                   </div>
                </div>
             </div>
@@ -1316,35 +1323,23 @@
 
             <!-- Tentang Warban -->
             <div class="col-lg-4">
-               <div class="fnm">
-                  War<span>ban</span>
-               </div>
+               <div class="fnm">War<span>ban</span></div>
                <p class="fdesc">
                   Warban adalah warung masakan khas Banjar yang menyajikan
                   hidangan tradisional dengan cita rasa autentik, bahan
                   berkualitas, dan suasana yang nyaman.
                </p>
                <div class="fsoc">
-                  <a href="#" aria-label="Facebook">
-                     <i class="fab fa-facebook-f"></i>
-                  </a>
-                  <a href="#" aria-label="Instagram">
-                     <i class="fab fa-instagram"></i>
-                  </a>
-                  <a href="#" aria-label="TikTok">
-                     <i class="fab fa-tiktok"></i>
-                  </a>
-                  <a href="#" aria-label="YouTube">
-                     <i class="fab fa-youtube"></i>
-                  </a>
+                  <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                  <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                </div>
             </div>
 
             <!-- Tautan cepat -->
             <div class="col-sm-6 col-lg-2">
-               <div class="ftit">
-                  Tautan Cepat
-               </div>
+               <div class="ftit">Tautan Cepat</div>
                <ul class="flinks ps-0">
                   <li class="nav-item"><a class="nav-link active" href="#hero">Beranda</a></li>
                   <li class="nav-item"><a class="nav-link" href="#about">Tentang Kami</a></li>
@@ -1358,107 +1353,54 @@
 
             <!-- Menu kami -->
             <div class="col-sm-6 col-lg-2">
-               <div class="ftit">
-                  Menu Kami
-               </div>
+               <div class="ftit">Menu Kami</div>
                <ul class="flinks ps-0">
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Soto Banjar
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Ikan Patin Baubar
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Nasi Kuning Banjar
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Ayam Masak Habang
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Iwak Karing Betanak
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#menu">
-                        <i class="fas fa-chevron-right"></i>
-                        Bingka
-                     </a>
-                  </li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Soto Banjar</a></li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Ikan Patin Baubar</a></li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Nasi Kuning Banjar</a></li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Ayam Masak Habang</a></li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Iwak Karing Betanak</a></li>
+                  <li><a href="#menu"><i class="fas fa-chevron-right"></i>Bingka</a></li>
                </ul>
             </div>
 
             <!-- Informasi kontak -->
             <div class="col-lg-4">
-               <div class="ftit">
-                  Hubungi Kami
-               </div>
+               <div class="ftit">Hubungi Kami</div>
 
                <!-- Alamat -->
                <div class="fci">
-                  <div class="fciico">
-                     <i class="fas fa-map-marker-alt"></i>
-                  </div>
+                  <div class="fciico"><i class="fas fa-map-marker-alt"></i></div>
                   <div class="fciinfo">
-                     <strong>
-                        Alamat
-                     </strong>
-                     Kayu Tangi II,
-                     Banjarmasin,
-                     Kalimantan Selatan
+                     <strong>Alamat</strong>
+                     Kayu Tangi II, Banjarmasin, Kalimantan Selatan
                   </div>
                </div>
 
                <!-- Telepon -->
                <div class="fci">
-                  <div class="fciico">
-                     <i class="fas fa-phone-alt"></i>
-                  </div>
+                  <div class="fciico"><i class="fas fa-phone-alt"></i></div>
                   <div class="fciinfo">
-                     <strong>
-                        Telepon
-                     </strong>
-                     +62 808-5410-098
+                     <strong>Telepon</strong>
+                     +62 811-5000-957
                   </div>
                </div>
 
                <!-- Email -->
                <div class="fci">
-                  <div class="fciico">
-                     <i class="fas fa-envelope"></i>
-                  </div>
+                  <div class="fciico"><i class="fas fa-envelope"></i></div>
                   <div class="fciinfo">
-                     <strong>
-                        Email
-                     </strong>
+                     <strong>Email</strong>
                      warban@gmail.com
                   </div>
                </div>
 
                <!-- Jam operasional -->
                <div class="fci">
-                  <div class="fciico">
-                     <i class="fas fa-clock"></i>
-                  </div>
+                  <div class="fciico"><i class="fas fa-clock"></i></div>
                   <div class="fciinfo">
-                     <strong>
-                        Jam Operasional
-                     </strong>
-                     Senin - Minggu,
-                     09.00 - 22.00 WIB
+                     <strong>Jam Operasional</strong>
+                     Senin - Jumat, 09.00 - 22.00 WITA
                   </div>
                </div>
 
@@ -1470,30 +1412,15 @@
       <div class="fbot">
          <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-
                <p>
-                  &copy; 2026
-                  <span>Warban</span>.
-                  Hak cipta dilindungi.
-                  Dibuat dengan
-                  <span>
-                     <i class="fas fa-heart"></i>
-                  </span>
-                  untuk pecinta masakan Banjar.
+                  &copy; 2026 <span>Warban</span>. Hak cipta dilindungi.
+                  Dibuat dengan <span><i class="fas fa-heart"></i></span> untuk pecinta masakan Banjar.
                </p>
-
                <div>
-                  <a href="#">
-                     Kebijakan Privasi
-                  </a>
-                  <a href="#">
-                     Syarat &amp; Ketentuan
-                  </a>
-                  <a href="#">
-                     Kebijakan Cookie
-                  </a>
+                  <a href="#">Kebijakan Privasi</a>
+                  <a href="#">Syarat &amp; Ketentuan</a>
+                  <a href="#">Kebijakan Cookie</a>
                </div>
-
             </div>
          </div>
       </div>
@@ -1501,18 +1428,17 @@
 
 
    <!-- ============================================================
-   ELEMEN MENGAMBANG
-   ============================================================ -->
-   <!-- Keranjang mengambang -->
-   <!-- <div class="cartfl"><i class="fas fa-shopping-cart"></i><span>My Cart</span><div class="ccount" id="cartCount">0</div></div> -->
-
+       ELEMEN MENGAMBANG
+       ============================================================ -->
    <!-- Tombol kembali ke atas -->
-   <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+   <button type="button" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas">
+      <i class="fas fa-chevron-up"></i>
+   </button>
 
 
    <!-- ============================================================
-   JAVASCRIPT: PUSTAKA
-   ============================================================ -->
+       JAVASCRIPT: PUSTAKA
+       ============================================================ -->
    <!-- jQuery -->
    <script src="js/jquery-3.7.1.min.js"></script>
    <!-- Bootstrap 5 -->
@@ -1526,8 +1452,8 @@
 
 
    <!-- ============================================================
-   JAVASCRIPT: FALLBACK INTERAKSI TOMBOL HERO (smooth scroll)
-   ============================================================ -->
+       JAVASCRIPT: FALLBACK INTERAKSI TOMBOL HERO (smooth scroll)
+       ============================================================ -->
    <script>
       document.addEventListener('DOMContentLoaded', function () {
          document.querySelectorAll('#hero a[href^="#"]').forEach(function (link) {
@@ -1544,8 +1470,8 @@
 
 
    <!-- ============================================================
-   JAVASCRIPT: UTAMA
-   ============================================================ -->
+       JAVASCRIPT: UTAMA
+       ============================================================ -->
    <script src="js/auth-client.js"></script>
    <script src="js/main.js"></script>
    <script src="js/warban-api.js"></script>
@@ -1557,6 +1483,7 @@
                throw error;
             });
             document.getElementById('loginBtn').hidden = !!user;
+            document.getElementById('accountMenu').hidden = !user;
             document.getElementById('logoutBtn').hidden = !user;
             const accountName = document.getElementById('accountName');
             accountName.hidden = !user;

@@ -211,7 +211,7 @@ Menu cards live in `index.html` inside `<div class="row g-4" id="mgrid">`. Copy 
 
 ### Update contact details and opening hours
 
-Search `index.html` for the phone number (`+62 808-5410-098`), email (`warban@gmail.com`) and address (`Kayu Tangi II`). They appear in the top bar, `hours`, `contact-section` and the footer.
+Search `index.html` for the phone number (`+62 811-5000-957`), email (`warban@gmail.com`) and address (`Kayu Tangi II`). They appear in the top bar, `hours`, `contact-section` and the footer.
 
 ### Replace images
 
