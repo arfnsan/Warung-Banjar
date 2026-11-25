@@ -6,13 +6,13 @@ const { HttpError, safeEqual } = require('./utils');
 const skip = () => process.env.DISABLE_RATE_LIMIT === '1';
 
 /** Batasi endpoint tulis (form publik) agar tidak di-spam */
-const formLimiter = (max = 10, windowMin = 15) =>
+const formLimiter = (max = 10, windowMin = 15, disabled = false) =>
   rateLimit({
     windowMs: windowMin * 60 * 1000,
     limit: max,
     standardHeaders: 'draft-7',
     legacyHeaders: false,
-    skip,
+    skip: () => disabled || skip(),
     message: { error: 'rate_limited', message: 'Terlalu banyak permintaan. Coba lagi beberapa saat lagi.' },
   });
 

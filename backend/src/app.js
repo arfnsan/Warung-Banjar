@@ -11,6 +11,9 @@ const ordersRoutes = require('./routes/orders');
 const reservationRoutes = require('./routes/reservations');
 const engagementRoutes = require('./routes/engagement');
 const adminRoutes = require('./routes/admin');
+const { auth } = require('./auth');
+const { productCache } = require('./product-cache');
+const { createModels } = require('./models');
 
 /**
  * Bangun aplikasi Express. Dipisah dari server.js supaya mudah dites.
@@ -19,6 +22,8 @@ const adminRoutes = require('./routes/admin');
  */
 function createApp(db, config) {
   const app = express();
+  app.locals.models = db.name !== ':memory:' ? createModels(db.name) : null;
+  app.locals.productCache = productCache(db, config.redisUrl);
   app.disable('x-powered-by');
   app.set('trust proxy', 1); // di belakang Nginx/Cloudflare/Railway dsb, agar rate-limit membaca IP asli
 
@@ -32,6 +37,9 @@ function createApp(db, config) {
   }
   app.use('/api', express.json({ limit: '50kb' }));
   app.use('/api', apiLimiter);
+  const login = auth(db, config);
+  app.use('/api/auth', login.router);
+  if (config.staticDir) app.use('/api', login.requireLogin);
 
   app.use('/api', publicRoutes(db));
   app.use('/api/orders', ordersRoutes(db, config));
@@ -47,7 +55,8 @@ function createApp(db, config) {
     for (const dir of ['css', 'js', 'img', 'webfonts']) {
       app.use(`/${dir}`, express.static(path.join(root, dir), { maxAge: config.env === 'production' ? '7d' : 0, dotfiles: 'deny' }));
     }
-    app.get('/', (_req, res) => res.sendFile(path.join(root, 'index.html')));
+    app.get('/login.html', (_req, res) => res.sendFile(path.join(root, 'login.html')));
+    app.get(['/', '/index.html'], login.requireLogin, (_req, res) => res.sendFile(path.join(root, 'index.html')));
   }
 
   app.use(errorHandler);

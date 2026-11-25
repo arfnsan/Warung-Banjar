@@ -54,13 +54,6 @@
   var rupiah = function (n) {
     return "Rp" + Number(n).toLocaleString("id-ID");
   };
-  var norm = function (s) {
-    return String(s || "")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toLowerCase();
-  };
-
   /** "09:00 AM" / "01:00 PM" / "13:00" -> "HH:MM" (24 jam), null bila tidak cocok */
   function to24(text) {
     var m = String(text || "").match(/(\d{1,2}):(\d{2})\s*(AM|PM)?/i);
@@ -194,14 +187,20 @@
   /* ======================= Data menu & info ======================= */
   var menu = []; // semua menu dari API
   var info = { delivery_fee: 0, free_delivery_min: 0, min_order: 0 };
-  var menuReady = api("/menu")
-    .then(function (d) {
-      menu = d.items;
+  function loadMenu(offset) {
+    return api("/menu?limit=100&offset=" + offset).then(function (d) {
+      menu = menu.concat(d.items);
+      if (d.items.length === 100) return loadMenu(offset + d.items.length);
       return menu;
-    })
-    .catch(function () {
-      menu = [];
     });
+  }
+  var menuReady = loadMenu(0).then(function () {
+    renderMenuCards();
+  }).catch(function () {
+    menu = [];
+    var grid = $("#mgrid");
+    if (grid) grid.replaceChildren(h("p", { role: "status", text: "Menu gagal dimuat. Silakan muat ulang halaman." }));
+  });
   api("/info")
     .then(function (d) {
       info = d;
@@ -209,19 +208,9 @@
     })
     .catch(function () {});
 
-  function findMenuByName(name) {
-    var n = norm(name);
-    for (var i = 0; i < menu.length; i++)
-      if (norm(menu[i].name) === n) return menu[i];
-    return null;
+  function findMenuById(id) {
+    return menu.find(function (it) { return String(it.id) === String(id); });
   }
-
-  /** Samakan harga/ketersediaan di kartu menu HTML dengan data server */
-  // main.js membaca data-reviews, sedangkan HTML memakai data-ulasan -> popup menampilkan "(null reviews)"
-  $$(".mcard").forEach(function (c) {
-    if (!c.getAttribute("data-reviews"))
-      c.setAttribute("data-reviews", c.getAttribute("data-ulasan") || "0");
-  });
 
   // Bungkus openMenuPop (fungsi global di main.js) untuk menerjemahkan label popup ke Bahasa Indonesia
   if (typeof window.openMenuPop === "function") {
@@ -242,26 +231,46 @@
     };
   }
 
-  function syncMenuCards() {
-    $$(".mcard").forEach(function (card) {
-      var it = findMenuByName(card.getAttribute("data-title"));
-      var wrap = card.closest(".mwrap") || card;
-      if (!it) {
-        return;
-      }
-      card.setAttribute("data-price", rupiah(it.price));
-      card.setAttribute("data-reviews", it.review_count);
-      card.setAttribute("data-rating", it.rating);
-      if (it.old_price) card.setAttribute("data-old", rupiah(it.old_price));
-      var pr = $(".mprice", card);
-      if (pr) {
-        if (pr.firstChild && pr.firstChild.nodeType === 3)
-          pr.firstChild.nodeValue = rupiah(it.price) + " ";
-        var sm = $("small", pr);
-        if (sm) sm.textContent = it.old_price ? rupiah(it.old_price) : "";
-      }
-      wrap.classList.toggle("wb-soldout", !it.is_available);
+  function renderMenuCards() {
+    var grid = $("#mgrid");
+    if (!grid) return;
+    grid.replaceChildren();
+    menu.forEach(function (it) {
+      var card = h("div", {
+        class: "mcard", "data-menu-id": it.id,
+        "data-img": it.image || "", "data-title": it.name, "data-cat": it.category.name,
+        "data-price": rupiah(it.price), "data-old": it.old_price ? rupiah(it.old_price) : "",
+        "data-rating": it.rating, "data-reviews": it.review_count,
+        "data-cal": it.calories == null ? "-" : it.calories,
+        "data-time": it.prep_minutes == null ? "-" : it.prep_minutes,
+        "data-desc": it.description, "data-tags": it.tags.join(","),
+      },
+        h("div", { class: "mimg" },
+          h("img", { src: it.image || "", alt: it.name }),
+          it.badge && h("div", { class: "mbdg " + it.badge.style, text: it.badge.label }),
+          h("button", { type: "button", class: "mhrt", "aria-label": "Favorit: " + it.name }, h("i", { class: "far fa-heart" }))),
+        h("div", { class: "mbody" },
+          h("div", { class: "mcat", text: it.category.name }),
+          h("div", { class: "mtit", text: it.name }),
+          h("div", { class: "mdesc", text: it.short_desc }),
+          h("div", { class: "mfoot" },
+            h("div", null,
+              h("div", { class: "mprice" }, rupiah(it.price) + " ", h("small", { text: it.old_price ? rupiah(it.old_price) : "" })),
+              h("div", { class: "mstars" }, h("i", { class: "fas fa-star" }), h("span", { text: " " + it.rating + " (" + it.review_count + ")" }))),
+            h("button", { type: "button", class: "madd", "aria-label": "Lihat detail: " + it.name }, h("i", { class: "fas fa-plus" })))));
+      grid.appendChild(h("div", { class: "col-sm-6 col-lg-4 mwrap" + (it.is_available ? "" : " wb-soldout"), "data-c": it.category.slug }, card));
+      paintHeart(card);
     });
+    if (!menu.length) grid.appendChild(h("p", { role: "status", text: "Belum ada menu tersedia." }));
+    var active = $(".filtbtn.active");
+    if (typeof window.filterMenu === "function") window.filterMenu(active ? active.getAttribute("data-f") : "all");
+    var chips = $(".sovcats");
+    if (chips) {
+      chips.replaceChildren(h("button", { type: "button", class: "sovcat active", "data-cat": "all", text: "Semua Menu" }));
+      menu.forEach(function (it) {
+        chips.appendChild(h("button", { type: "button", class: "sovcat", "data-menu-id": it.id, text: it.name }));
+      });
+    }
   }
   function syncCategoryCounts() {
     api("/categories")
@@ -281,7 +290,6 @@
       .catch(function () {});
   }
   menuReady.then(function () {
-    syncMenuCards();
     syncCategoryCounts();
   });
 
@@ -790,10 +798,10 @@
       e.preventDefault();
       e.stopImmediatePropagation();
       if (adding) return;
-      var title = ($("#mpTitle") || {}).textContent;
+      var id = $("#menuPop").getAttribute("data-menu-id");
       var qty = parseInt(($("#mpQnum") || {}).textContent, 10) || 1;
       menuReady.then(function () {
-        var it = findMenuByName(title);
+        var it = findMenuById(id);
         if (!it)
           return toast(
             "Menu belum tersedia. Muat ulang halaman lalu coba lagi.",
@@ -822,9 +830,9 @@
 
   /* ======================= Pencarian ======================= */
   var searchInput = $("#searchInput");
-  var cardByName = function (name) {
+  var cardById = function (id) {
     return $$(".mcard").filter(function (c) {
-      return norm(c.getAttribute("data-title")) === norm(name);
+      return c.getAttribute("data-menu-id") === String(id);
     })[0];
   };
   function closeSearchOv() {
@@ -835,10 +843,10 @@
     }
   }
   /** Tutup overlay, pastikan filter menu = semua, scroll ke kartu lalu (opsional) buka popup detail */
-  function showMenuItem(name, openPopup) {
+  function showMenuItem(id, openPopup) {
     closeSearchOv();
     if (typeof window.filterMenu === "function") window.filterMenu("all");
-    var card = cardByName(name);
+    var card = cardById(id);
     var target = card ? card.closest(".mwrap") || card : $("#menu");
     setTimeout(function () {
       if (target)
@@ -851,8 +859,7 @@
     }, 350);
   }
 
-  // Chip di overlay (.sovcat) memakai data-cat sisa template (burgers/pizza/...) sehingga filter lama
-  // menyembunyikan SEMUA menu. Chip "Semua Menu" -> tampilkan semua; chip lain = nama hidangan -> buka hidangannya.
+  // Chip menu dan hasil pencarian menunjuk ID database yang sama.
   document.addEventListener(
     "click",
     function (e) {
@@ -870,7 +877,7 @@
           var m = $("#menu");
           if (m) m.scrollIntoView({ behavior: "smooth", block: "start" });
         }, 300);
-      } else showMenuItem(chip.textContent, true);
+      } else showMenuItem(chip.getAttribute("data-menu-id"), true);
     },
     true,
   );
@@ -913,10 +920,10 @@
                   role: "button",
                   tabindex: "0",
                   onclick: function () {
-                    showMenuItem(it.name, true);
+                    showMenuItem(it.id, true);
                   },
                   onkeydown: function (e) {
-                    if (e.key === "Enter") showMenuItem(it.name, true);
+                    if (e.key === "Enter") showMenuItem(it.id, true);
                   },
                 },
                 h("img", { src: it.image || "", alt: "" }),
@@ -941,7 +948,7 @@
     var goFirst = function () {
       clearTimeout(timer);
       runSearch().then(function (items) {
-        if (items[0]) showMenuItem(items[0].name, true);
+        if (items[0]) showMenuItem(items[0].id, true);
       });
     };
     searchInput.addEventListener("input", function () {
@@ -1050,7 +1057,7 @@
   if (promoState.code) revalidatePromo();
 
   /* ======================= Form: reservasi, kontak, newsletter ======================= */
-  // Form di index.html bukan <form>: field tanpa name, tombol type="button" (#resBtn, #ctcBtn, #nlBtn).
+  // Reservasi memakai <form>; kontak dan newsletter memakai tombol tanpa form.
   // Field dicocokkan lewat teks <label class="flbl"> -> kontrol di sebelahnya.
   var LABELS = {
     name: /nama/i,
@@ -1208,6 +1215,15 @@
         });
     }
 
+    var button = $(cfg.button, container);
+    if (button && button.form) {
+      button.form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        run(button);
+      });
+      return;
+    }
+
     document.addEventListener(
       "click",
       function (e) {
@@ -1355,15 +1371,16 @@
   }
 
   /* ======================= Favorit (ikon hati, disimpan di browser) ======================= */
-  var FAV_KEY = "warban_fav";
+  var FAV_KEY = "warban_fav_ids";
   var favs = store(FAV_KEY) || [];
   function paintHeart(card) {
     var heart = $(".mhrt", card);
     if (!heart) return;
-    var on = favs.indexOf(norm(card.getAttribute("data-title"))) >= 0;
+    var on = favs.indexOf(card.getAttribute("data-menu-id")) >= 0;
     var ico = $("i", heart);
     ico.classList.toggle("fas", on);
     ico.classList.toggle("far", !on);
+    heart.setAttribute("aria-pressed", String(on));
     heart.style.color = on ? "var(--primary)" : "#ccc";
   }
   $$(".mcard").forEach(paintHeart);
@@ -1374,15 +1391,13 @@
       if (!heart) return;
       var card = heart.closest(".mcard");
       if (!card) return;
-      setTimeout(function () {
-        // setelah handler main.js men-toggle ikon
-        var key = norm(card.getAttribute("data-title"));
-        favs = favs.filter(function (x) {
-          return x !== key;
-        });
-        if ($("i", heart).classList.contains("fas")) favs.push(key);
-        store(FAV_KEY, favs);
-      }, 0);
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      var key = card.getAttribute("data-menu-id");
+      if (favs.indexOf(key) >= 0) favs = favs.filter(function (x) { return x !== key; });
+      else favs.push(key);
+      store(FAV_KEY, favs);
+      paintHeart(card);
     },
     true,
   );

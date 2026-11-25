@@ -100,6 +100,9 @@
             <!-- Tombol pencarian & tombol pesan -->
             <div class="d-flex align-items-center gap-1">
                <button id="navSearchBtn" title="Search"><i class="fas fa-search"></i></button>
+               <a href="login.html" class="nav-link" id="loginBtn"><i class="fas fa-user me-1" aria-hidden="true"></i>Login</a>
+               <span id="accountName" class="small" hidden></span>
+               <button type="button" class="nav-link border-0 bg-transparent" id="logoutBtn" hidden><i class="fas fa-sign-out-alt me-1" aria-hidden="true"></i>Keluar</button>
                <a href="#menu" class="nav-link nav-cta"><i class="fas fa-shopping-bag me-1"></i>Pesan Sekarang!</a>
             </div>
 
@@ -124,38 +127,7 @@
          </div>
 
          <!-- Kategori di dalam kotak pencarian -->
-         <div class="sovcats">
-            <div class="sovcat active" data-cat="all">
-               <img src="img/menu/1.jpg" alt="" />Semua Menu
-            </div>
-            <div class="sovcat" data-cat="burgers">
-               <img src="img/menu/2.jpg" alt="" />Soto Banjar
-            </div>
-            <div class="sovcat" data-cat="pizza">
-               <img src="img/menu/3.jpg" alt="" />Ikan Patin Baubar
-            </div>
-            <div class="sovcat" data-cat="chicken">
-               <img src="img/menu/4.jpg" alt="" />Nasi Kuning Banjar
-            </div>
-            <div class="sovcat" data-cat="wraps">
-               <img src="img/menu/5.jpg" alt="" />Ayam Masak Habang
-            </div>
-            <div class="sovcat" data-cat="pasta">
-               <img src="img/menu/6.jpg" alt="" />Iwak Karing Betanak
-            </div>
-            <div class="sovcat" data-cat="desserts">
-               <img src="img/menu/7.jpg" alt="" />Gangan Asam Banjar
-            </div>
-            <div class="sovcat" data-cat="desserts">
-               <img src="img/menu/8.jpg" alt="" />Lontong Banjar
-            </div>
-            <div class="sovcat" data-cat="desserts">
-               <img src="img/menu/9.jpg" alt="" />Bingka
-            </div>
-            <div class="sovcat" data-cat="desserts">
-               <img src="img/menu/10.jpg" alt="" />Pais Patin
-            </div>
-         </div>
+         <div class="sovcats"></div>
 
          <!-- Pencarian terpopuler -->
          <div class="sovtrend">
@@ -418,261 +390,8 @@
          </div>
 
          <!-- Grid kartu menu -->
-         <div class="row g-4" id="mgrid">
-
-            <!-- Kartu 1: Soto Banjar -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up">
-               <div class="mcard" data-img="img/menu/2.jpg" data-title="Soto Banjar" data-cat="Hidangan Berkuah"
-                  data-price="Rp25.000" data-old="Rp30.000" data-rating="4.9" data-ulasan="128" data-cal="320"
-                  data-time="12"
-                  data-desc="Soto khas Banjar dengan kuah gurih berbumbu rempah, suwiran ayam, telur, soun, perkedel dan taburan bawang goreng."
-                  data-tags="Khas Banjar,Hangat,Terlaris">
-                  <div class="mimg">
-                     <img src="img/menu/2.jpg" alt="Soto Banjar" />
-                     <div class="mbdg hot"><i class="fas fa-star"></i> Terlaris</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Berkuah</div>
-                     <div class="mtit">Soto Banjar</div>
-                     <div class="mdesc">Kuah rempah gurih dengan ayam suwir, telur, soun, perkedel dan bawang goreng
-                     </div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp25.000 <small>Rp30.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(128)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 2: Ikan Patin Baubar -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/menu/3.jpg" data-title="Ikan Patin Baubar" data-cat="Hidangan Ikan"
-                  data-price="Rp32.000" data-old="Rp38.000" data-rating="4.8" data-ulasan="95" data-cal="410"
-                  data-time="18"
-                  data-desc="Ikan patin yang dibakar hingga harum lalu disajikan dengan bumbu khas Banjar yang gurih dan kaya rempah."
-                  data-tags="Ikan,Khas Banjar,Panggang">
-                  <div class="mimg">
-                     <img src="img/menu/3.jpg" alt="Ikan Patin Baubar" />
-                     <div class="mbdg new"><i class="fas fa-star"></i> Baru</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Ikan</div>
-                     <div class="mtit">Ikan Patin Baubar</div>
-                     <div class="mdesc">Ikan patin bakar harum dengan bumbu khas Banjar yang gurih dan kaya rempah</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp32.000 <small>Rp38.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(95)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 3: Nasi Kuning Banjar -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="nasi" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/menu/4.jpg" data-title="Nasi Kuning Banjar" data-cat="Nasi & Lauk"
-                  data-price="Rp22.000" data-old="Rp27.000" data-rating="4.9" data-ulasan="110" data-cal="520"
-                  data-time="15"
-                  data-desc="Nasi kuning gurih khas Banjar disajikan dengan lauk berbumbu, serundeng, telur dan pelengkap segar."
-                  data-tags="Nasi,Khas Banjar,Hangat">
-                  <div class="mimg">
-                     <img src="img/menu/4.jpg" alt="Nasi Kuning Banjar" />
-                     <div class="mbdg"><i class="fas fa-star"></i> Favorit</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Nasi &amp; Lauk</div>
-                     <div class="mtit">Nasi Kuning Banjar</div>
-                     <div class="mdesc">Nasi kuning gurih dengan lauk berbumbu, serundeng, telur dan pelengkap segar
-                     </div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp22.000 <small>Rp27.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(110)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 4: Ayam Masak Habang -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="utama" data-aos="fade-up">
-               <div class="mcard" data-img="img/menu/5.jpg" data-title="Ayam Masak Habang" data-cat="Masakan Utama"
-                  data-price="Rp28.000" data-old="Rp33.000" data-rating="4.9" data-ulasan="140" data-cal="460"
-                  data-time="15"
-                  data-desc="Ayam dimasak dengan bumbu habang khas Banjar yang kaya rempah, gurih, harum dan memiliki rasa pedas manis yang khas."
-                  data-tags="Ayam,Khas Banjar,Pedas">
-                  <div class="mimg">
-                     <img src="img/menu/5.jpg" alt="Ayam Masak Habang" />
-                     <div class="mbdg hot"><i class="fas fa-star"></i> Favorit</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Masakan Utama</div>
-                     <div class="mtit">Ayam Masak Habang</div>
-                     <div class="mdesc">Ayam dengan bumbu habang khas Banjar yang gurih, harum dan pedas manis</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp28.000 <small>Rp33.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(140)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 5: Iwak Karing Betanak -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/menu/6.jpg" data-title="Iwak Karing Betanak" data-cat="Hidangan Ikan"
-                  data-price="Rp25.000" data-old="Rp29.000" data-rating="4.8" data-ulasan="88" data-cal="390"
-                  data-time="15"
-                  data-desc="Ikan kering yang dimasak bersama santan dan bumbu rempah Banjar hingga menghasilkan rasa gurih dan harum."
-                  data-tags="Ikan,Santan,Khas Banjar">
-                  <div class="mimg">
-                     <img src="img/menu/6.jpg" alt="Iwak Karing Betanak" />
-                     <div class="mbdg new"><i class="fas fa-star"></i> Baru</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Ikan</div>
-                     <div class="mtit">Iwak Karing Betanak</div>
-                     <div class="mdesc">Ikan kering dimasak santan dan rempah Banjar dengan cita rasa gurih dan harum
-                     </div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp25.000 <small>Rp29.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(88)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 6: Gangan Asam Banjar -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/menu/7.jpg" data-title="Gangan Asam Banjar" data-cat="Hidangan Berkuah"
-                  data-price="Rp24.000" data-old="Rp28.000" data-rating="4.8" data-ulasan="76" data-cal="280"
-                  data-time="14"
-                  data-desc="Sayur berkuah asam khas Banjar dengan ikan dan sayuran segar, menghasilkan rasa segar, gurih dan sedikit pedas."
-                  data-tags="Segar,Kuah,Khas Banjar">
-                  <div class="mimg">
-                     <img src="img/menu/7.jpg" alt="Gangan Asam Banjar" />
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Berkuah</div>
-                     <div class="mtit">Gangan Asam Banjar</div>
-                     <div class="mdesc">Kuah asam khas Banjar dengan ikan dan sayuran segar, gurih dan menyegarkan</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp24.000 <small>Rp28.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(76)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 7: Lontong Banjar -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="kuah" data-aos="fade-up">
-               <div class="mcard" data-img="img/menu/8.jpg" data-title="Lontong Banjar" data-cat="Hidangan Berkuah"
-                  data-price="Rp20.000" data-old="Rp24.000" data-rating="4.8" data-ulasan="64" data-cal="430"
-                  data-time="12"
-                  data-desc="Lontong khas Banjar dengan kuah santan berbumbu, sayuran dan pelengkap yang membuatnya gurih serta mengenyangkan."
-                  data-tags="Lontong,Santan,Khas Banjar">
-                  <div class="mimg">
-                     <img src="img/menu/8.jpg" alt="Lontong Banjar" />
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Berkuah</div>
-                     <div class="mtit">Lontong Banjar</div>
-                     <div class="mdesc">Lontong dengan kuah santan berbumbu dan sayuran, gurih serta mengenyangkan</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp20.000 <small>Rp24.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(64)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 8: Bingka -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="kue" data-aos="fade-up" data-aos-delay="80">
-               <div class="mcard" data-img="img/menu/9.jpg" data-title="Bingka" data-cat="Kue Tradisional"
-                  data-price="Rp15.000" data-old="Rp18.000" data-rating="4.9" data-ulasan="102" data-cal="310"
-                  data-time="8"
-                  data-desc="Kue tradisional Banjar yang lembut dan harum, dibuat dari adonan kaya telur dan santan dengan tekstur lembut di bagian dalam."
-                  data-tags="Manis,Kue Tradisional,Khas Banjar">
-                  <div class="mimg">
-                     <img src="img/menu/9.jpg" alt="Bingka" />
-                     <div class="mbdg new"><i class="fas fa-star"></i> Favorit</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Kue Tradisional</div>
-                     <div class="mtit">Bingka</div>
-                     <div class="mdesc">Kue tradisional Banjar yang lembut, harum dan kaya rasa santan serta telur</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp15.000 <small>Rp18.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(102)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <!-- Kartu 9: Pais Patin -->
-            <div class="col-sm-6 col-lg-4 mwrap" data-c="ikan" data-aos="fade-up" data-aos-delay="160">
-               <div class="mcard" data-img="img/menu/10.jpg" data-title="Pais Patin" data-cat="Hidangan Ikan"
-                  data-price="Rp30.000" data-old="Rp35.000" data-rating="4.9" data-ulasan="91" data-cal="440"
-                  data-time="18"
-                  data-desc="Ikan patin berbumbu rempah dan cabai yang dibungkus daun lalu dimasak hingga bumbu meresap dan aromanya semakin harum."
-                  data-tags="Ikan,Rempah,Khas Banjar">
-                  <div class="mimg">
-                     <img src="img/menu/10.jpg" alt="Pais Patin" />
-                     <div class="mbdg hot"><i class="fas fa-star"></i> Pilihan</div>
-                     <div class="mhrt"><i class="far fa-heart"></i></div>
-                  </div>
-                  <div class="mbody">
-                     <div class="mcat">Hidangan Ikan</div>
-                     <div class="mtit">Pais Patin</div>
-                     <div class="mdesc">Patin berbumbu rempah dan cabai, dimasak hingga bumbu meresap dan harum</div>
-                     <div class="mfoot">
-                        <div>
-                           <div class="mprice">Rp30.000 <small>Rp35.000</small></div>
-                           <div class="mstars"><i class="fas fa-star"></i> <span
-                                 style="color:#bbb;font-size:.7rem;">(91)</span></div>
-                        </div>
-                        <button class="madd" title="Lihat Detail"><i class="fas fa-plus"></i></button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
+         <div class="row g-4" id="mgrid" aria-live="polite">
+            <p role="status">Memuat menu...</p>
          </div>
          <!-- Akhir #mgrid -->
 
@@ -1827,9 +1546,37 @@
    <!-- ============================================================
    JAVASCRIPT: UTAMA
    ============================================================ -->
-   <script>window.WARBAN_API_BASE = 'http://localhost:3000';</script>
+   <script src="js/auth-client.js"></script>
    <script src="js/main.js"></script>
    <script src="js/warban-api.js"></script>
+   <script>
+      async function syncAccount() {
+         try {
+            const user = await window.warbanAuth('me').catch(error => {
+               if (error.status === 401) return null;
+               throw error;
+            });
+            document.getElementById('loginBtn').hidden = !!user;
+            document.getElementById('logoutBtn').hidden = !user;
+            const accountName = document.getElementById('accountName');
+            accountName.hidden = !user;
+            accountName.textContent = user ? user.username : '';
+         } catch (_) { /* Tautan login tetap tersedia ketika server tidak dapat dijangkau. */ }
+      }
+      window.addEventListener('pageshow', syncAccount);
+      document.getElementById('logoutBtn').addEventListener('click', async function () {
+         this.disabled = true;
+         try {
+            await window.warbanAuth('logout', {}).catch(error => {
+               if (error.status !== 401) throw error;
+            });
+            location.replace('/login.html');
+         } catch (_) {
+            alert('Tidak dapat keluar. Periksa koneksi lalu coba lagi.');
+            this.disabled = false;
+         }
+      });
+   </script>
 
 </body>
 

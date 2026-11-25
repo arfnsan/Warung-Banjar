@@ -4,6 +4,27 @@ const assert = require('node:assert/strict');
 const { openDb } = require('../src/db');
 const { createApp } = require('../src/app');
 
+test('batas percobaan akun dilewati di development dan tetap aktif di production', async () => {
+  delete process.env.DISABLE_RATE_LIMIT;
+  for (const env of ['development', 'production']) {
+    const db = openDb(':memory:');
+    const app = createApp(db, { env, corsOrigins: [], adminKey: '', whatsapp: '62', staticDir: null });
+    const server = await new Promise(resolve => { const s = app.listen(0, () => resolve(s)); });
+    try {
+      for (const endpoint of ['login', 'register']) {
+        const statuses = [];
+        for (let i = 0; i < 7; i++) {
+          const response = await fetch(`http://127.0.0.1:${server.address().port}/api/auth/${endpoint}`, {
+            method: 'POST', headers: { 'content-type': 'application/json' }, body: '{}',
+          });
+          statuses.push(response.status);
+        }
+        assert.deepEqual(statuses, env === 'development' ? [400, 400, 400, 400, 400, 400, 400] : [400, 400, 400, 400, 400, 429, 429]);
+      }
+    } finally { server.close(); db.close(); }
+  }
+});
+
 test('form kontak dibatasi 5 request / 15 menit per IP', async () => {
   delete process.env.DISABLE_RATE_LIMIT;
   const db = openDb(':memory:');

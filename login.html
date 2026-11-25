@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Masuk ke akun Warban">
+  <title>Masuk - Warban</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: var(--cream);
+    }
+
+    .login-page {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .login-art {
+      background: linear-gradient(135deg, rgba(25, 15, 10, .78), rgba(90, 20, 10, .56)), url('img/banner-img.jpg') center/cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(32px, 6vw, 80px);
+    }
+
+    .login-art h1 {
+      color: #fff;
+      font-size: clamp(2.5rem, 4vw, 4.5rem);
+      line-height: 1.15;
+      max-width: 620px;
+    }
+
+    .login-art p {
+      max-width: 500px;
+      line-height: 1.8;
+    }
+
+    .login-art .bname,
+    .login-art .bsub {
+      color: #fff;
+    }
+
+    .login-form-side {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+    }
+
+    .login-card {
+      width: min(100%, 430px);
+    }
+
+    .login-card h2 {
+      font-size: 2.25rem;
+      margin-bottom: 10px;
+    }
+
+    .login-card>p {
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .login-card label {
+      display: block;
+      font-weight: 600;
+      font-size: .9rem;
+      margin: 18px 0 8px;
+    }
+
+    .login-card input {
+      width: 100%;
+      border: 1px solid #ddd3ca;
+      border-radius: 10px;
+      background: #fff;
+      padding: 14px 16px;
+      font: inherit;
+    }
+
+    .login-card input:focus {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .login-card button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 15px;
+      font: 600 1rem Poppins, sans-serif;
+      cursor: pointer;
+      margin-top: 26px;
+    }
+
+    .login-card button:hover {
+      background: #bd2015;
+    }
+
+    .login-card button:disabled {
+      opacity: .65;
+      cursor: wait;
+    }
+
+    .login-card .auth-toggle {
+      width: auto;
+      margin: 0;
+      padding: 4px;
+      background: transparent;
+      color: #bd2015;
+      font-size: inherit;
+      text-decoration: underline;
+    }
+
+    .login-card a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .login-card a:focus-visible,
+    .login-card button:focus-visible {
+      outline: 2px solid var(--dark);
+      outline-offset: 3px;
+    }
+
+    .login-note {
+      margin-top: 20px;
+      padding: 13px 15px;
+      border-radius: 8px;
+      background: #fff0db;
+      color: #67420d;
+      font-size: .85rem;
+      line-height: 1.6;
+    }
+
+    #login-status {
+      margin-top: 14px;
+      color: #a21b12;
+      font-size: .9rem;
+    }
+
+    @media (max-width: 760px) {
+      .login-page {
+        grid-template-columns: 1fr;
+      }
+
+      .login-art {
+        min-height: 220px;
+        gap: 35px;
+      }
+
+      .login-art h1 {
+        font-size: 2rem;
+      }
+
+      .login-art p {
+        display: none;
+      }
+
+      .login-form-side {
+        padding: 48px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="login-page">
+    <section class="login-art" aria-label="Warban">
+      <a class="blogo" href="index.html" aria-label="Warban, kembali ke beranda">
+        <span class="bico"><i class="fas fa-utensils" aria-hidden="true"></i></span>
+        <span><span class="bname">War<span>ban</span></span><br><span class="bsub">Warung Masakan Banjar</span></span>
+      </a>
+      <div>
+        <h1>Rasa Banjar selalu dekat dengan Anda.</h1>
+        <p>Masuk untuk menikmati pengalaman Warban.</p>
+      </div>
+    </section>
+    <section class="login-form-side" aria-labelledby="login-title">
+      <div class="login-card">
+        <a href="index.html"><i class="fas fa-arrow-left" aria-hidden="true"></i> Kembali ke beranda</a>
+        <h2 id="login-title" style="margin-top: 30px">Selamat datang!</h2>
+        <p id="login-description">Masukkan username dan kata sandi Anda.</p>
+        <form id="login-form">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username" minlength="3" maxlength="50"
+            required>
+          <label for="password">Kata sandi</label>
+          <input id="password" name="password" type="password" autocomplete="current-password"
+            placeholder="Masukkan kata sandi" minlength="8" maxlength="1024" required>
+          <div id="confirm-field" hidden>
+            <label for="confirm-password">Ulangi kata sandi</label>
+            <input id="confirm-password" type="password" autocomplete="new-password"
+              placeholder="Ulangi kata sandi Anda" minlength="8" maxlength="1024" disabled>
+          </div>
+          <button type="submit" id="submit-auth">Masuk</button>
+          <p id="login-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="login-note"><span id="auth-prompt">Belum punya akun?</span> <button type="button" class="auth-toggle"
+            id="auth-toggle">Daftar akun</button></p>
+      </div>
+    </section>
+  </main>
+  <script src="js/auth-client.js"></script>
+  <script>
+    const form = document.getElementById('login-form');
+    const status = document.getElementById('login-status');
+    const button = document.getElementById('submit-auth');
+    const toggle = document.getElementById('auth-toggle');
+    const password = document.getElementById('password');
+    const confirmation = document.getElementById('confirm-password');
+    let registering = false;
+    window.warbanAuthReady.then(state => {
+      if (state.error) status.textContent = state.error.message;
+    });
+
+    function setMode(register) {
+      registering = register;
+      document.title = register ? 'Daftar Akun - Warban' : 'Masuk - Warban';
+      document.getElementById('login-title').textContent = register ? 'Buat akun Warban' : 'Selamat datang!';
+      document.getElementById('login-description').textContent = register ? 'Pilih username dan kata sandi minimal 8 karakter.' : 'Masukkan username dan kata sandi Anda.';
+      document.getElementById('confirm-field').hidden = !register;
+      confirmation.disabled = !register;
+      confirmation.required = register;
+      confirmation.value = '';
+      confirmation.setCustomValidity('');
+      password.value = '';
+      password.autocomplete = register ? 'new-password' : 'current-password';
+      button.textContent = register ? 'Daftar akun' : 'Masuk';
+      toggle.textContent = register ? 'Masuk' : 'Daftar akun';
+      document.getElementById('auth-prompt').textContent = register ? 'Sudah punya akun?' : 'Belum punya akun?';
+      status.textContent = '';
+    }
+
+    toggle.addEventListener('click', () => {
+      setMode(!registering);
+      document.getElementById('username').focus();
+    });
+    form.addEventListener('input', () => confirmation.setCustomValidity(''));
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      if (registering && confirmation.value !== password.value) {
+        confirmation.setCustomValidity('Kata sandi belum sama.');
+        confirmation.reportValidity();
+        return;
+      }
+      status.textContent = '';
+      button.disabled = true;
+      toggle.disabled = true;
+      button.textContent = registering ? 'Membuat akun...' : 'Memeriksa akun...';
+      try {
+        const data = await window.warbanAuth(registering ? 'register' : 'login', {
+          username: this.elements.namedItem('username').value,
+          password: this.elements.namedItem('password').value,
+        });
+        if (registering) {
+          setMode(false);
+          status.textContent = data.message;
+          password.focus();
+        } else {
+          location.replace('/');
+        }
+      } catch (error) {
+        status.textContent = error.message;
+      } finally {
+        button.disabled = false;
+        toggle.disabled = false;
+        button.textContent = registering ? 'Daftar akun' : 'Masuk';
+      }
+    });
+  </script>
+</body>
+
+</html>

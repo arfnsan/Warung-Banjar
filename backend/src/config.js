@@ -5,6 +5,7 @@ const list = (v) => (v || '').split(',').map((s) => s.trim()).filter(Boolean);
 
 module.exports = {
   env: process.env.NODE_ENV || 'development',
+  redisUrl: process.env.REDIS_URL || '',
   port: Number(process.env.PORT) || 3000,
   dbPath: process.env.DB_PATH
     ? path.resolve(process.cwd(), process.env.DB_PATH)

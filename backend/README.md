@@ -31,10 +31,21 @@ Admin (header `x-admin-key: <ADMIN_API_KEY>` atau `Authorization: Bearer ...`):
 cd backend
 npm install
 cp .env.example .env        # lalu isi ADMIN_API_KEY
+npm run create-user          # opsional; akun juga bisa dibuat dari halaman login
 npm start                   # http://localhost:3000  (menyajikan frontend + API sekaligus)
-npm test                    # 31 test
+npm test                    # pengujian API, autentikasi, dan rate limit
 ```
 Database dibuat otomatis di `backend/data/warban.db` dan diisi data menu dari `index.html` saat pertama jalan.
+
+### Login pelanggan
+
+Buka **http://localhost:3000/**. Pengunjung tanpa sesi diarahkan ke `/login.html`; semua `/api/*` selain `/api/auth/login` dan `/api/auth/register` meminta sesi valid. Pengguna dapat memilih **Daftar akun** di halaman login, mengisi username (3–50 karakter), kata sandi (8–1024 karakter), dan konfirmasi kata sandi. Setelah pendaftaran berhasil, masuk dengan akun tersebut. Username harus unik; pendaftaran dibatasi 5 permintaan per 15 menit per IP. Perintah `npm run create-user` tetap tersedia sebagai pilihan bagi pengelola. Tabel `users` menyimpan `username` dan `password_hash` (scrypt dengan salt acak), bukan kata sandi asli. Tabel `sessions` menyimpan hash token sesi dan waktu kedaluwarsa; cookie sesi HttpOnly, SameSite=Lax, dan Secure saat `NODE_ENV=production`. Logout mencabut sesi di database. Navbar menampilkan Login ketika belum masuk, lalu username dan Keluar setelah sesi terverifikasi. Jalankan melalui server Express ini, bukan Live Server atau membuka `index.html` langsung, karena serverlah yang menegakkan akses.
+
+Endpoint admin tetap membutuhkan `ADMIN_API_KEY` selain sesi login; akun baru tidak mendapat hak admin. Login pada HTTP lokal hanya untuk pengembangan; gunakan HTTPS untuk deployment.
+
+Untuk sementara, batas 5 percobaan per 15 menit pada login dan pendaftaran dinonaktifkan saat `NODE_ENV=development` (mode default). Batas tersebut tetap aktif di production. Validasi akun dan pembatasan API umum tetap berjalan.
+
+Jika `index.html` atau `login.html` dibuka melalui `file://` atau Live Server lokal, `js/auth-client.js` mengarahkan browser ke `http://localhost:3000/login.html`. Backend harus berjalan (`npm.cmd start` di PowerShell dari folder `backend`). Untuk port backend selain 3000, buka URL backend tersebut langsung. Permintaan akun memakai origin backend yang sama supaya cookie sesi tetap berfungsi.
 
 Susunan folder yang diharapkan (taruh `backend/` di root repo frontend):
 ```
@@ -95,3 +106,39 @@ Butuh hosting Node.js dengan disk persisten (VPS, Railway/Render dengan volume, 
 ## Pengaturan yang bisa diubah (PUT /api/admin/settings)
 `open_time`, `close_time`, `reservation_last_seating_before_close` (menit sebelum tutup), `reservation_capacity`, `reservation_stay_minutes`, `reservation_max_days_ahead`, `reservation_max_guests`, `delivery_fee`, `free_delivery_min`, `min_order`.
 Default ongkir Rp0 (sesuai "Gratis Antar" di topbar). Promo awal `WARBAN30` (30%, maks Rp30.000, min. belanja Rp20.000, berlaku harian) — ubah lewat `/api/admin/promos`.
+
+
+## ORM, cache Redis, backup dan restore
+
+Model Sequelize `Product`, `Order`, dan `OrderItem` memetakan tabel SQLite yang sudah ada.
+Detail produk dan pelacakan pesanan menggunakan model pada database berbasis file.
+Transaksi pembuatan pesanan tetap menggunakan transaksi better-sqlite3 yang sudah ada;
+`sequelize.sync()` tidak dijalankan sehingga schema/data lama tidak diubah otomatis.
+
+Isi `REDIS_URL=redis://127.0.0.1:6379` untuk mengaktifkan cache daftar produk.
+Cache berlaku 60 detik, dipisahkan berdasarkan filter, pencarian, urutan, limit dan offset.
+Trigger SQLite mengganti versi cache setelah perubahan menu/kategori, termasuk melalui admin.
+Header `X-Product-Cache` menunjukkan HIT, MISS atau BYPASS. Redis gagal terhubung saat
+startup membuat aplikasi berjalan dengan SQLite; restart aplikasi setelah Redis pulih.
+Harga checkout selalu dihitung dari database, bukan cache.
+
+Benchmark HTTP lokal (database contoh terpisah, 10 warmup dan 100 sampel per mode):
+```powershell
+$env:REDIS_URL='redis://127.0.0.1:6379'
+npm.cmd run benchmark:cache
+```
+Output memuat median dan p95 dalam milidetik untuk BYPASS dan HIT. Untuk sembilan produk,
+Redis belum tentu lebih cepat daripada SQLite lokal. Script gagal tanpa menghasilkan
+angka perbandingan jika Redis tidak tersedia.
+
+Backup dan restore memakai SQLite online backup, mencakup WAL dan memeriksa integrity
+serta foreign key. Target wajib berupa file baru agar database aktif tidak tertimpa:
+```powershell
+npm.cmd run backup -- data/warban.db backups/warban-backup.db
+npm.cmd run backup -- backups/warban-backup.db backups/warban-restored.db
+```
+Untuk memakai hasil restore, hentikan server, arahkan `DB_PATH` ke file hasil restore,
+lalu jalankan server kembali. Batasi akses Windows ACL pada folder backup; file berisi
+data pelanggan, hash password dan sesi. Simpan salinan terenkripsi di lokasi terpisah.
+`npm.cmd test` menguji kesamaan data setelah backup/restore, autentikasi hash setelah
+restore, query ORM dengan input SQL injection, serta fallback cache saat Redis mati.

@@ -16,7 +16,11 @@ const server = app.listen(config.port, () => {
 
 function shutdown(sig) {
   console.log(`\n${sig} diterima, menutup server...`);
-  server.close(() => { db.close(); process.exit(0); });
+  server.close(async () => {
+    if (app.locals.productCache?.client.isOpen) app.locals.productCache.client.destroy();
+    if (app.locals.models) await app.locals.models.sequelize.close();
+    db.close(); process.exit(0);
+  });
   setTimeout(() => process.exit(1), 5000).unref();
 }
 process.on('SIGINT', () => shutdown('SIGINT'));

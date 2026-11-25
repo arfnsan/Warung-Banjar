@@ -138,8 +138,12 @@ module.exports = (db, config) => {
   });
 
   /** Lacak pesanan: butuh kode + nomor HP yang dipakai saat memesan */
-  r.get('/:code', formLimiter(60, 15), validate(trackSchema, 'query'), (req, res) => {
-    const o = loadOrder(db, String(req.params.code).toUpperCase());
+  r.get('/:code', formLimiter(60, 15), validate(trackSchema, 'query'), async (req, res) => {
+    const models = req.app.locals.models;
+    const code = String(req.params.code).toUpperCase();
+    const record = models && await models.Order.findOne({ where: { code }, include: [{ model: models.OrderItem, as: 'items' }] });
+    const o = models ? (record && record.get({ plain: true })) : loadOrder(db, code);
+    if (models && o) o.items = o.items.map(i => ({ menu_item_id: i.menu_item_id, name: i.name, price: i.price, qty: i.qty, line_total: i.price * i.qty }));
     // pesan sama untuk "tidak ada" & "HP salah" supaya kode pesanan tidak bisa ditebak
     if (!o || o.phone !== req.valid.phone) throw new HttpError(404, 'Pesanan tidak ditemukan.', 'not_found');
     res.json({ order: publicOrder(o) });

@@ -73,25 +73,6 @@ function closeSearch() {
     document.body.style.overflow = '';
 }
 
-// Category buttons inside search box
-document.querySelectorAll('.sovcat').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        document.querySelectorAll('.sovcat').forEach(function(b) {
-            b.classList.remove('active');
-        });
-        this.classList.add('active');
-        var f = this.getAttribute('data-cat');
-        closeSearch();
-        setTimeout(function() {
-            filterMenu(f);
-            document.getElementById('menu').scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }, 300);
-    });
-});
-
 // Trending tags fill the search input
 document.querySelectorAll('.sovtrend .ttag').forEach(function(t) {
     t.addEventListener('click', function() {
@@ -167,6 +148,7 @@ var menuPop = document.getElementById('menuPop');
 var mpQty = 1;
 
 function openMenuPop(card) {
+    menuPop.setAttribute('data-menu-id', card.getAttribute('data-menu-id'));
     var img = card.getAttribute('data-img');
     var title = card.getAttribute('data-title');
     var cat = card.getAttribute('data-cat');
@@ -199,10 +181,14 @@ function openMenuPop(card) {
         '<div class="mpm"><div class="mpmv">' + time + ' min</div><div class="mpml">Prep Time</div></div>' +
         '<div class="mpm"><div class="mpmv">' + rating + '/5</div><div class="mpml">Rating</div></div>';
 
-    document.getElementById('mpTags').innerHTML =
-        tags.split(',').filter(Boolean).map(function(t) {
-            return '<span class="mptag">' + t.trim() + '</span>';
-        }).join('');
+    var tagBox = document.getElementById('mpTags');
+    tagBox.replaceChildren();
+    tags.split(',').filter(Boolean).forEach(function(t) {
+        var tag = document.createElement('span');
+        tag.className = 'mptag';
+        tag.textContent = t.trim();
+        tagBox.appendChild(tag);
+    });
 
     mpQty = 1;
     document.getElementById('mpQnum').textContent = 1;
@@ -213,30 +199,11 @@ function openMenuPop(card) {
     document.body.style.overflow = 'hidden';
 }
 
-// Card click open popup
-document.querySelectorAll('.mcard').forEach(function(card) {
-    card.addEventListener('click', function() {
-        openMenuPop(this);
-    });
-});
-
-// + button  open popup (stop propagation to avoid double firing)
-document.querySelectorAll('.madd').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        openMenuPop(this.closest('.mcard'));
-    });
-});
-
-// Heart toggle (no popup)
-document.querySelectorAll('.mhrt').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        var ico = this.querySelector('i');
-        ico.classList.toggle('far');
-        ico.classList.toggle('fas');
-        this.style.color = ico.classList.contains('fas') ? 'var(--primary)' : '#ccc';
-    });
+// Delegasi event agar kartu dari API juga dapat dibuka.
+document.getElementById('mgrid').addEventListener('click', function(e) {
+    var card = e.target.closest('.mcard');
+    if (!card || e.target.closest('.mhrt')) return;
+    openMenuPop(card);
 });
 
 // Close popup
@@ -270,143 +237,6 @@ document.getElementById('mpAddCart').addEventListener('click', function() {
         self.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
         self.style.background = '';
     }, 1000);
-});
-
-
-
-document.getElementById('reservationForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    var btn = document.getElementById('resBtn');
-    var ok = document.getElementById('resOk');
-    var msg = document.getElementById('resMessage');
-
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-    ok.style.display = 'none';
-
-    var data = {
-        name: document.getElementById('resName').value.trim(),
-        phone: document.getElementById('resPhone').value.trim(),
-        email: document.getElementById('resEmail').value.trim(),
-        date: document.getElementById('resDate').value,
-        time: document.getElementById('resTime').value,
-        guests: Number(document.getElementById('resGuests').value),
-        notes: document.getElementById('resNotes').value.trim()
-    };
-
-    try {
-        const response = await fetch('/api/reservations', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || 'Reservasi gagal diproses.');
-        }
-
-        const reservation = result.reservation;
-
-        const message = [
-            'Halo Warung Banjar, saya ingin mengonfirmasi reservasi.',
-            '',
-            'Kode reservasi: ' + reservation.code,
-            'Nama: ' + data.name,
-            'Telepon: ' + data.phone,
-            'Tanggal: ' + data.date,
-            'Jam: ' + data.time,
-            'Jumlah tamu: ' + data.guests,
-            'Catatan: ' + (data.notes || '-')
-        ].join('\n');
-
-        msg.textContent = 'Reservasi tersimpan! WhatsApp akan dibuka untuk mengirim konfirmasi.';
-        ok.style.display = 'block';
-
-        const waNumber = '628085410098';
-        const waUrl = 'https://wa.me/' + waNumber + '?text=' +
-            encodeURIComponent(message);
-
-        window.open(waUrl, '_blank');
-
-        this.reset();
-    } catch (error) {
-        msg.textContent = error.message || 'Terjadi kesalahan. Coba lagi.';
-        ok.style.display = 'block';
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-calendar-check"></i> Reservasi';
-    }
-});
-
-
-document.getElementById('reservationForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-
-    var btn = document.getElementById('resBtn');
-    var ok = document.getElementById('resOk');
-    var msg = document.getElementById('resMessage');
-
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
-    ok.style.display = 'none';
-
-    var data = {
-        name: document.getElementById('resName').value.trim(),
-        phone: document.getElementById('resPhone').value.trim(),
-        email: document.getElementById('resEmail').value.trim(),
-        date: document.getElementById('resDate').value,
-        time: document.getElementById('resTime').value,
-        guests: Number(document.getElementById('resGuests').value),
-        notes: document.getElementById('resNotes').value.trim()
-    };
-
-    try {
-        const response = await fetch('/api/reservations', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if (!response.ok) {
-            throw new Error(result.message || 'Reservasi gagal diproses.');
-        }
-
-        const reservation = result.reservation;
-
-        const message = [
-            'Halo Warung Banjar, saya ingin mengonfirmasi reservasi.',
-            '',
-            'Kode reservasi: ' + reservation.code,
-            'Nama: ' + data.name,
-            'Telepon: ' + data.phone,
-            'Tanggal: ' + data.date,
-            'Jam: ' + data.time,
-            'Jumlah tamu: ' + data.guests,
-            'Catatan: ' + (data.notes || '-')
-        ].join('\n');
-
-        msg.textContent = 'Reservasi tersimpan! WhatsApp akan dibuka untuk mengirim konfirmasi.';
-        ok.style.display = 'block';
-
-        const waNumber = '628085410098';
-        const waUrl = 'https://wa.me/' + waNumber + '?text=' +
-            encodeURIComponent(message);
-
-        window.open(waUrl, '_blank');
-
-        this.reset();
-    } catch (error) {
-        msg.textContent = error.message || 'Terjadi kesalahan. Coba lagi.';
-        ok.style.display = 'block';
-    } finally {
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-calendar-check"></i> Reservasi';
-    }
 });
 
 

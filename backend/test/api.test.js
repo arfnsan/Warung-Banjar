@@ -32,6 +32,13 @@ before(async () => {
 after(() => { server.close(); db.close(); });
 
 /* ---------------- Menu ---------------- */
+test('pagination menu tidak mengulang item dan menolak offset negatif', async () => {
+  const all = await api('GET', '/menu');
+  const page = await api('GET', '/menu?limit=2&offset=2');
+  assert.deepEqual(page.body.items, all.body.items.slice(2, 4));
+  assert.equal((await api('GET', '/menu?offset=-1')).status, 400);
+});
+
 test('GET /menu mengembalikan 9 menu hasil seed', async () => {
   const r = await api('GET', '/menu');
   assert.equal(r.status, 200);

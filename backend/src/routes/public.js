@@ -44,6 +44,7 @@ const menuQuery = z.object({
   q: z.string().trim().max(60).optional(),
   sort: z.enum(['popular', 'rating', 'price_asc', 'price_desc', 'default']).default('default'),
   limit: z.coerce.number().int().min(1).max(100).default(50),
+  offset: z.coerce.number().int().min(0).default(0),
   log: z.enum(['0', '1']).optional(), // 1 = catat kata kunci untuk "Paling banyak dicari"
 });
 
@@ -78,8 +79,8 @@ module.exports = (db) => {
     res.json({ total_items: total, categories: rows });
   });
 
-  r.get('/menu', validate(menuQuery, 'query'), (req, res) => {
-    const { category, q, sort, limit, log } = req.valid;
+  r.get('/menu', validate(menuQuery, 'query'), async (req, res) => {
+    const { category, q, sort, limit, offset, log } = req.valid;
     const where = ['m.is_available = 1'];
     const params = [];
     if (category && category !== 'all') {
@@ -92,7 +93,11 @@ module.exports = (db) => {
         OR LOWER(m.tags) LIKE ? ESCAPE '\\' OR LOWER(c.name) LIKE ? ESCAPE '\\')`);
       params.push(like, like, like, like);
     }
-    const rows = db.prepare(`${BASE_SELECT} WHERE ${where.join(' AND ')} ORDER BY ${SORTS[sort]} LIMIT ?`).all(...params, limit);
+    const load = () => db.prepare(`${BASE_SELECT} WHERE ${where.join(' AND ')} ORDER BY ${SORTS[sort]} LIMIT ? OFFSET ?`).all(...params, limit, offset);
+    const cache = req.app.locals.productCache;
+    const result = cache ? await cache.read({ category, q, sort, limit, offset }, load) : { rows: load(), status: 'BYPASS' };
+    const rows = result.rows;
+    res.set('X-Product-Cache', result.status);
 
     if (log === '1' && q && q.length >= 3 && rows.length) {
       db.prepare(`INSERT INTO search_logs (term,hits) VALUES (?,1)
@@ -101,8 +106,15 @@ module.exports = (db) => {
     res.json({ count: rows.length, items: rows.map(mapItem) });
   });
 
-  r.get('/menu/:idOrSlug', (req, res) => {
+  r.get('/menu/:idOrSlug', async (req, res) => {
     const key = req.params.idOrSlug;
+    const models = req.app.locals.models;
+    if (models) {
+      const product = await models.Product.findOne({ where: /^\d+$/.test(key) ? { id: Number(key) } : { slug: key }, raw: true });
+      if (!product) throw new HttpError(404, 'Menu tidak ditemukan.', 'not_found');
+      const category = db.prepare('SELECT slug AS category_slug, name AS category_name FROM categories WHERE id = ?').get(product.category_id);
+      return res.json(mapItem({ ...product, ...category }));
+    }
     const row = /^\d+$/.test(key)
       ? db.prepare(`${BASE_SELECT} WHERE m.id = ?`).get(Number(key))
       : db.prepare(`${BASE_SELECT} WHERE m.slug = ?`).get(key);

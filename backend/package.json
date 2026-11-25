@@ -7,7 +7,10 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "seed": "node src/seed.js",
-    "test": "node --test \"test/*.test.js\""
+    "create-user": "node src/create-user.js",
+    "test": "node --test \"test/*.test.js\"",
+    "backup": "node src/backup.js",
+    "benchmark:cache": "node benchmark-cache.js"
   },
   "engines": {
     "node": ">=20"
@@ -21,6 +24,14 @@
     "express": "^5.1.0",
     "express-rate-limit": "^8.0.0",
     "helmet": "^8.1.0",
+    "redis": "^6.4.0",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1",
     "zod": "^4.0.0"
+  },
+  "overrides": {
+    "sequelize": {
+      "uuid": "11.1.1"
+    }
   }
 }
